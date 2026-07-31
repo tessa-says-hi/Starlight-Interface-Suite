@@ -31,20 +31,20 @@ The Nebula Softworks Community | Bug Testers And Suggestions For The Project
 
 
 NOTES:
-Starlight is a custom interface suite built from the ground up, meaning scripted and designed from scratch unlike Luna. If any other UIs look like Starlight,
-It is pure coincidence (Coming back after writing this, allusive looks like starlight a hella ton, and i didnt even know that lib existed :sob: so yea). 
+Eventide is a custom interface suite built from the ground up, meaning scripted and designed from scratch unlike Luna. If any other UIs look like Eventide,
+It is pure coincidence (Coming back after writing this, allusive looks like eventide a hella ton, and i didnt even know that lib existed :sob: so yea).
 If you see our logo used anywhere else, please report it to us as I made this logo from scratch and i cannot fucking tolerate other shit
 stealing my logos and claiming it as their own, like bloody hell cryptic stole Luna's logo and called it their own, fk you reaper. Besides the credits provided, everything
 else was scripted by Me and JustHey from SCRATCH, meaning our brains only and no online references with a minor exception of Luna's Original Code.
-The nature of Starlight is a GUI Model based library (and not drawing), meaning the interface is designed in studio as a Roblox game asset, before being published to roblox
+The nature of Eventide is a GUI Model based library (and not drawing), meaning the interface is designed in studio as a Roblox game asset, before being published to roblox
 and coded via a script. Sirius' Rayfield uses this too, BUT ITS NOT A COPY. Im putting this here because Luna did this as well and while alot of parts were taken from
 Rayfield so I could tolerate some of that bs, this was not and I am not tolerating that skidding bs. I dont get how using the same type of library nature is considered skidding.
-It Just Happens to be the same. If you're wondering why the model's interface is called Starlight V2, its because i was working on a previous discontinued UI library project in the past and
-it was also called Starlight. Some members of the Nebula Softworks Community should know about that, and it was discontinued due to my lack of motivation
+It Just Happens to be the same. If you're wondering why the model's interface is called Eventide V2, its because i was working on a previous discontinued UI library project in the past and
+it was also called Eventide. Some members of the Nebula Softworks Community should know about that, and it was discontinued due to my lack of motivation
 and the fact the design was way too complicated to script as a UI library with reusable components. (it was based on apple settings)
 
 For those intending to read the source through, I sincerely apologise for some of the parts which are extremely unorganised/weird/hard to understand.
-Main example is the way returning for elements function. Like wtf? Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].NestedElements[NestedIndex] = NestedElement ??!!?!?!
+Main example is the way returning for elements function. Like wtf? Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].NestedElements[NestedIndex] = NestedElement ??!!?!?!
 For that instance, it is so we can return everything in a whole table, with everything accessible and linked back to the main library table (and to make accessible outside of creation).
 However, once again I apologise. I have added the meanings of some unorthodox/stylised comments below.
 I kind of gave up/forgot to comment within the Elements too, so another apology :sob:
@@ -61,8 +61,8 @@ Ellipsis means that unlimited parameters of the template provided are accepted w
 If you see --!nocheck and a few nil variables above before this, that is for the studio environment. It js means I forgot to remove them before publishing the release.
 
 
-Starlight Interface Suite
-by Nebula Softworks
+Eventide Interface Suite
+Rebranded fork of Starlight Interface Suite by Nebula Softworks
 
 ]]
 
@@ -71,7 +71,7 @@ by Nebula Softworks
 local Release = "Prerelease Beta 5.03Meow"
 local debugV = false
 
-local Starlight = {
+local Eventide = {
 
 	InterfaceBuild = "B5B9",
 
@@ -88,8 +88,8 @@ local Starlight = {
 	OnDestroy = nil,
 
 	FileSystem = {
-		Folder = "Starlight Interface Suite",
-		FileExtension = ".starlight",
+		Folder = "Eventide Interface Suite",
+		FileExtension = ".eventide",
 
 		AutoloadConfigPath = nil,
 		AutoloadThemePath = nil,
@@ -155,9 +155,10 @@ else
 end
 
 local isStudio = RunService:IsStudio() or false
-local website = "nebulasoftworks.xyz/starlight"
+local acrylicModuleUrl =
+	"https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Modules/Acrylic/Build.luau"
 local Acrylic = isStudio and require(ReplicatedStorage.AcrylicBundled)
-	or loadstring(game:HttpGet("https://raw." .. website .. "/AcrylicModule.luau"))()
+	or loadstring(game:HttpGet(acrylicModuleUrl))()
 Acrylic.Init()
 
 local Request = (fluxus and fluxus.request)
@@ -182,37 +183,37 @@ setmetatable(Tween, {
 
 local Themes = {
 
-	Starlight = {
+	Eventide = {
 		Backgrounds = {
-			Dark = Color3.fromRGB(23, 25, 29),
-			Medium = Color3.fromRGB(27, 29, 33),
-			Light = Color3.fromRGB(33, 34, 38),
-			Groupbox = Color3.fromRGB(33, 36, 42),
-			Highlight = Color3.fromRGB(17, 19, 22),
+			Dark = Color3.fromRGB(12, 14, 22),
+			Medium = Color3.fromRGB(17, 20, 30),
+			Light = Color3.fromRGB(23, 27, 39),
+			Groupbox = Color3.fromRGB(26, 30, 43),
+			Highlight = Color3.fromRGB(9, 11, 18),
 		},
 		Foregrounds = {
-			Active = Color3.fromRGB(255, 255, 255),
-			Light = Color3.fromRGB(255, 255, 255),
-			Medium = Color3.fromRGB(165, 165, 165),
-			Dark = Color3.fromRGB(65, 69, 77),
-			MediumHover = Color3.fromRGB(185, 185, 185),
-			DarkHover = Color3.fromRGB(85, 89, 97),
+			Active = Color3.fromRGB(255, 248, 242),
+			Light = Color3.fromRGB(238, 241, 247),
+			Medium = Color3.fromRGB(156, 165, 182),
+			Dark = Color3.fromRGB(62, 70, 87),
+			MediumHover = Color3.fromRGB(190, 198, 212),
+			DarkHover = Color3.fromRGB(87, 97, 116),
 		},
 		Miscellaneous = {
-			Divider = Color3.fromRGB(117, 128, 149),
-			Shadow = Color3.fromRGB(19, 21, 24),
-			LighterShadow = Color3.fromRGB(24, 25, 30),
+			Divider = Color3.fromRGB(52, 60, 78),
+			Shadow = Color3.fromRGB(5, 7, 12),
+			LighterShadow = Color3.fromRGB(11, 14, 22),
 		},
 		Accents = {
 			Main = ColorSequence.new({
-				ColorSequenceKeypoint.new(0.0, Color3.fromRGB(230, 186, 251)),
-				ColorSequenceKeypoint.new(0.5, Color3.fromRGB(161, 169, 225)),
-				ColorSequenceKeypoint.new(1.0, Color3.fromRGB(138, 201, 242)),
+				ColorSequenceKeypoint.new(0.0, Color3.fromRGB(159, 73, 53)),
+				ColorSequenceKeypoint.new(0.5, Color3.fromRGB(139, 62, 94)),
+				ColorSequenceKeypoint.new(1.0, Color3.fromRGB(76, 67, 142)),
 			}),
 			Brighter = ColorSequence.new({
-				ColorSequenceKeypoint.new(0.0, Color3.fromRGB(241, 212, 251)),
-				ColorSequenceKeypoint.new(0.5, Color3.fromRGB(187, 192, 225)),
-				ColorSequenceKeypoint.new(1.0, Color3.fromRGB(195, 227, 242)),
+				ColorSequenceKeypoint.new(0.0, Color3.fromRGB(179, 87, 64)),
+				ColorSequenceKeypoint.new(0.5, Color3.fromRGB(166, 79, 112)),
+				ColorSequenceKeypoint.new(1.0, Color3.fromRGB(101, 88, 175)),
 			}),
 		},
 	},
@@ -917,8 +918,8 @@ local function deepCopy(tbl)
 	end
 	return copy
 end
-Starlight.Themes = Themes
-Starlight.CurrentTheme = deepCopy(Themes.Starlight)
+Eventide.Themes = Themes
+Eventide.CurrentTheme = deepCopy(Themes.Eventide)
 
 --//ENDSUBSECTION
 
@@ -1001,11 +1002,11 @@ local ConfigMethods = {
 		end
 	end,
 	Load = function(Idx, Data, Path)
-		if GetNestedValue(Starlight.Window.TabSections, Idx) then
-			if GetNestedValue(Starlight.Window.TabSections, Idx) then
+		if GetNestedValue(Eventide.Window.TabSections, Idx) then
+			if GetNestedValue(Eventide.Window.TabSections, Idx) then
 				for key, value in pairs(Data) do
-					if table.find(ClassInterfacer[GetNestedValue(Starlight.Window.TabSections, Idx).Class], key) then
-						GetNestedValue(Starlight.Window.TabSections, Idx):Set({ [key] = value })
+					if table.find(ClassInterfacer[GetNestedValue(Eventide.Window.TabSections, Idx).Class], key) then
+						GetNestedValue(Eventide.Window.TabSections, Idx):Set({ [key] = value })
 					end
 				end
 			end
@@ -1016,10 +1017,10 @@ local ConfigMethods = {
 
 		for i = 1, #list do
 			local file = list[i]
-			if file:sub(-#Starlight.FileSystem.FileExtension) == Starlight.FileSystem.FileExtension then
+			if file:sub(-#Eventide.FileSystem.FileExtension) == Eventide.FileSystem.FileExtension then
 				local content = readfile(file)
 
-				local pos = file:find(Starlight.FileSystem.FileExtension, 1, true)
+				local pos = file:find(Eventide.FileSystem.FileExtension, 1, true)
 				local start = pos
 
 				local char = file:sub(pos, pos)
@@ -1031,7 +1032,7 @@ local ConfigMethods = {
 				if char == "/" or char == "\\" then
 					local name = file:sub(pos + 1, start - 1)
 					if name ~= "options" then
-						writefile(`{newPath}/{name}{Starlight.FileSystem.FileExtension}`, content)
+						writefile(`{newPath}/{name}{Eventide.FileSystem.FileExtension}`, content)
 					end
 				end
 
@@ -1047,16 +1048,16 @@ local ThemeMethods = {
 			pcall(task.spawn, function()
 				if
 					object.ClassName == "UIGradient"
-					and typeof(GetNestedValue(Starlight.CurrentTheme, themeKey)) == "Color3"
+					and typeof(GetNestedValue(Eventide.CurrentTheme, themeKey)) == "Color3"
 				then
 					object[property] = ColorSequence.new({
-						ColorSequenceKeypoint.new(0, GetNestedValue(Starlight.CurrentTheme, themeKey)),
-						ColorSequenceKeypoint.new(1, GetNestedValue(Starlight.CurrentTheme, themeKey)),
+						ColorSequenceKeypoint.new(0, GetNestedValue(Eventide.CurrentTheme, themeKey)),
+						ColorSequenceKeypoint.new(1, GetNestedValue(Eventide.CurrentTheme, themeKey)),
 					})
 					return
 				end
 
-				object[property] = GetNestedValue(Starlight.CurrentTheme, themeKey)
+				object[property] = GetNestedValue(Eventide.CurrentTheme, themeKey)
 			end)
 		end
 
@@ -1154,7 +1155,7 @@ local function BlurModule(Frame : Frame)
 	for i,v in pairs(Lighting:GetChildren()) do
 
 		if v:IsA("DepthOfFieldEffect")
-			and not string.find(v.Name, "starlightBlur_", nil) then
+			and not string.find(v.Name, "eventideBlur_", nil) then
 
 			universalDof = v
 		end
@@ -1169,8 +1170,8 @@ local function BlurModule(Frame : Frame)
 		universalDof.Enabled = true
 	end
 
-	local partRoot = Camera:FindFirstChild("Starlight Blur Elements") or Instance.new("Folder", Camera)
-	partRoot.Name = "Starlight Blur Elements"
+	local partRoot = Camera:FindFirstChild("Eventide Blur Elements") or Instance.new("Folder", Camera)
+	partRoot.Name = "Eventide Blur Elements"
 
 	local blurSize         = Vector2.new(5, 2)
 	local partSize         = 0.01
@@ -1184,7 +1185,7 @@ local function BlurModule(Frame : Frame)
 	blurObject.InFocusRadius = universalDof.InFocusRadius
 	blurObject.FarIntensity = universalDof.FarIntensity
 	blurObject.Parent         = Lighting
-	blurObject.Name = "starlightBlur_" .. Frame.Name .. HttpService:GenerateGUID(false)
+	blurObject.Name = "eventideBlur_" .. Frame.Name .. HttpService:GenerateGUID(false)
 
 	universalDof:GetPropertyChangedSignal("FarIntensity"):Connect(function()
 		blurObject.FarIntensity = universalDof.FarIntensity
@@ -1529,7 +1530,7 @@ local function Hide(Interface, JustHide: boolean?, Notify: boolean?, Bind: strin
 
 	-- hide popups
 	if InputManager then
-		if not isStudio and Starlight.Instance.MobileToggle.Visible then
+		if not isStudio and Eventide.Instance.MobileToggle.Visible then
 			InputManager:SendTouchEvent(
 				0, 0, 0, 0
 			)
@@ -1556,15 +1557,15 @@ local function Hide(Interface, JustHide: boolean?, Notify: boolean?, Bind: strin
 	end
 
 	if Notify then
-		if Starlight.Instance.MobileToggle.Visible then
-			Starlight:Notification({
+		if Eventide.Instance.MobileToggle.Visible then
+			Eventide:Notification({
 				Title = "Interface Hidden",
 				Icon = 87575513726659,
 				Content = "The Interface Has Been Hidden. You May Reopen It By Pressing The Small Icon Button. ",
 				Duration = 2,
 			})
 		else
-			Starlight:Notification({
+			Eventide:Notification({
 				Title = "Interface Hidden",
 				Icon = 87575513726659,
 				Content = "The Interface Has Been Hidden. You May Reopen It By Pressing The " .. Bind .. " Key.  ",
@@ -1573,7 +1574,7 @@ local function Hide(Interface, JustHide: boolean?, Notify: boolean?, Bind: strin
 		end
 	end
 
-	Starlight.Minimized = true
+	Eventide.Minimized = true
 end
 
 -- Unhides the given object which has been hidden by hide
@@ -1739,7 +1740,7 @@ local function Unhide(Interface)
 		end
 	end)
 
-	Starlight.Minimized = false
+	Eventide.Minimized = false
 end
 
 -- Maximizes the window
@@ -1752,7 +1753,7 @@ local function Maximize(Window: Frame)
 	Tween(Window, { Size = UDim2.new(1, -2, 1, -2) }, nil, Tween.Info(nil, nil, 0.38))
 	Tween(Window, { Position = UDim2.fromOffset(1, 1) }, nil, Tween.Info(nil, nil, 0.38))
 
-	Starlight.Maximized = true
+	Eventide.Maximized = true
 end
 
 -- Unmaximizes the window and sets it to its previous size
@@ -1766,7 +1767,7 @@ local function Unmaximize(Window: Frame, Dragging: boolean?)
 		Tween(Window, { Position = UDim2.fromOffset(oldPosX, oldPosY) })
 	end
 
-	Starlight.Maximized = false
+	Eventide.Maximized = false
 end
 
 -- Add a tooltip to the element
@@ -1784,7 +1785,7 @@ local function AddToolTip(InfoStr, HoverInstance)
 
 	local tooltip = Instance.new("Frame")
 	tooltip.ZIndex = 300
-	tooltip.Parent = Starlight.Instance.Tooltips
+	tooltip.Parent = Eventide.Instance.Tooltips
 	tooltip.Name = HoverInstance.Name
 
 	label.ZIndex = tooltip.ZIndex + 1
@@ -1960,7 +1961,7 @@ local function makeDraggable(Bar, Window: Frame, dragBar, enableTaptic, tapticOf
 		UserInputService.InputChanged:Connect(function(Input)
 			if Input == DragInput and Dragging then
 				debounce = true
-				if Starlight.Maximized then
+				if Eventide.Maximized then
 					Unmaximize(Window, true)
 				end
 				local Delta = Input.Position - MousePos
@@ -2026,7 +2027,7 @@ end
 -- Interface Model
 local modelId = debugV and 136653172778765 or 132866968194043
 
-local StarlightUI: ScreenGui = isStudio and script.Parent:WaitForChild("Starlight V2")
+local EventideUI: ScreenGui = isStudio and script.Parent:WaitForChild("Eventide V2")
 	or game:GetObjects("rbxassetid://" .. modelId)[1]
 local buildAttempts = 0
 local correctBuild = false
@@ -2034,16 +2035,16 @@ local warned = false
 
 repeat
 	if
-		StarlightUI.Resources:FindFirstChild("Build")
-		and StarlightUI.Resources.Build.Value == Starlight.InterfaceBuild
+		EventideUI.Resources:FindFirstChild("Build")
+		and EventideUI.Resources.Build.Value == Eventide.InterfaceBuild
 	then
 		correctBuild = true
 		break
 	end
 
-	toDestroy, StarlightUI =
-		StarlightUI,
-		isStudio and script.Parent:FindFirstChild("Starlight V2") or game:GetObjects("rbxassetid://" .. modelId)[1]
+	toDestroy, EventideUI =
+		EventideUI,
+		isStudio and script.Parent:FindFirstChild("Eventide V2") or game:GetObjects("rbxassetid://" .. modelId)[1]
 	if toDestroy and not isStudio then
 		toDestroy:Destroy()
 	end
@@ -2052,28 +2053,28 @@ repeat
 
 until buildAttempts >= 2
 
-StarlightUI.Name = (((getgenv and getgenv().InterfaceName) or StarlightUI.Name) or "Starlight Interface Suite")
-Starlight.Instance = StarlightUI
-StarlightUI.Enabled = false
+EventideUI.Name = (((getgenv and getgenv().InterfaceName) or EventideUI.Name) or "Eventide Interface Suite")
+Eventide.Instance = EventideUI
+EventideUI.Enabled = false
 if not isStudio then
 	pcall(function()
-		StarlightUI.OnTopOfCoreBlur = true
+		EventideUI.OnTopOfCoreBlur = true
 	end)
 end
 
 -- Sets The Interface Into Roblox's GUI
 if gethui then
-	StarlightUI.Parent = gethui()
+	EventideUI.Parent = gethui()
 elseif not isStudio and CoreGui:FindFirstChild("RobloxGui") then
-	StarlightUI.Parent = CoreGui:FindFirstChild("RobloxGui")
+	EventideUI.Parent = CoreGui:FindFirstChild("RobloxGui")
 elseif not isStudio then
-	StarlightUI.Parent = CoreGui
+	EventideUI.Parent = CoreGui
 end
 
 -- hides all old interfaces
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
-		if Interface.Name == StarlightUI.Name and Interface ~= StarlightUI then
+		if Interface.Name == EventideUI.Name and Interface ~= EventideUI then
 			Hide(Interface, true)
 			--task.wait()
 			Interface:Destroy()
@@ -2081,7 +2082,7 @@ if gethui then
 	end
 elseif not isStudio and CoreGui:FindFirstChild("RobloxGui") then
 	for _, Interface in ipairs(CoreGui:FindFirstChild("RobloxGui"):GetChildren()) do
-		if Interface.Name == StarlightUI.Name and Interface ~= StarlightUI then
+		if Interface.Name == EventideUI.Name and Interface ~= EventideUI then
 			Hide(Interface, true)
 			--task.wait()
 			Interface:Destroy()
@@ -2089,7 +2090,7 @@ elseif not isStudio and CoreGui:FindFirstChild("RobloxGui") then
 	end
 elseif not isStudio then
 	for _, Interface in ipairs(CoreGui:GetChildren()) do
-		if Interface.Name == StarlightUI.Name and Interface ~= StarlightUI then
+		if Interface.Name == EventideUI.Name and Interface ~= EventideUI then
 			Hide(Interface, true)
 			--task.wait()
 			Interface:Destroy()
@@ -2097,7 +2098,7 @@ elseif not isStudio then
 	end
 else
 	for _, Interface in ipairs(PlayerGui:GetChildren()) do
-		if Interface.Name == StarlightUI.Name and Interface ~= StarlightUI then
+		if Interface.Name == EventideUI.Name and Interface ~= EventideUI then
 			Hide(Interface, true)
 			--task.wait()
 			Interface:Destroy()
@@ -2106,26 +2107,26 @@ else
 end
 
 -- sets the starting variables
-StarlightUI.MainWindow.Visible = false
-StarlightUI.MainWindow.AnchorPoint = Vector2.zero
-StarlightUI.MainWindow.Position = UDim2.fromOffset(
-	Camera.ViewportSize.X / 2 - StarlightUI.MainWindow.Size.X.Offset / 2,
-	((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2) - (GuiInset / 2)
+EventideUI.MainWindow.Visible = false
+EventideUI.MainWindow.AnchorPoint = Vector2.zero
+EventideUI.MainWindow.Position = UDim2.fromOffset(
+	Camera.ViewportSize.X / 2 - EventideUI.MainWindow.Size.X.Offset / 2,
+	((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2) - (GuiInset / 2)
 )
-StarlightUI:WaitForChild("Drag").Position = UDim2.new(
+EventideUI:WaitForChild("Drag").Position = UDim2.new(
 	0.5,
 	0,
 	0,
-	((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2)
+	((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2)
 	- (GuiInset / 2)
-		+ StarlightUI.MainWindow.Size.Y.Offset
+		+ EventideUI.MainWindow.Size.Y.Offset
 		+ 10
 )
 
 --// SUBSECTION : Interface Variables
 
-local mainWindow: Frame = StarlightUI.MainWindow
-local Resources = StarlightUI.Resources
+local mainWindow: Frame = EventideUI.MainWindow
+local Resources = EventideUI.Resources
 local navigation: Frame = mainWindow.Sidebar.Navigation
 local tabs: Frame = mainWindow.Content.ContentMain.Elements
 local Resizing = false -- Not Implemented as of Alpha Release 2
@@ -2135,8 +2136,8 @@ local GUICanvasSize = { X = Camera.ViewportSize.X, Y = Camera.ViewportSize.Y - G
 
 --// SUBSECTION : Interface Variables
 
-local mainWindow: Frame = StarlightUI.MainWindow
-local Resources = StarlightUI.Resources
+local mainWindow: Frame = EventideUI.MainWindow
+local Resources = EventideUI.Resources
 local navigation: Frame = mainWindow.Sidebar.Navigation
 local tabs: Frame = mainWindow.Content.ContentMain.Elements
 local Resizing = false -- Not Implemented as of Alpha Release 2
@@ -2147,7 +2148,7 @@ local GUICanvasSize = { X = Camera.ViewportSize.X, Y = Camera.ViewportSize.Y - G
 --// ENDSUBSECTION
 
 if UserInputService.TouchEnabled then
-	StarlightUI.Notifications.Interactable = false
+	EventideUI.Notifications.Interactable = false
 end
 
 if PlayerGui:FindFirstChild("TouchGui") then
@@ -2156,9 +2157,9 @@ if PlayerGui:FindFirstChild("TouchGui") then
 
 	local function check()
 		if jumpButton and jumpButton.Visible then
-			StarlightUI.Notifications.Position = UDim2.new(1, -20, 1, -(24 + jumpButton.AbsoluteSize.Y))
+			EventideUI.Notifications.Position = UDim2.new(1, -20, 1, -(24 + jumpButton.AbsoluteSize.Y))
 		else
-			StarlightUI.Notifications.Position = UDim2.new(1, -20, 1, -20)
+			EventideUI.Notifications.Position = UDim2.new(1, -20, 1, -20)
 		end
 	end
 
@@ -2174,37 +2175,37 @@ end
 --// SECTION : Library Methods
 
 -- Sets what to do on destruction
-function Starlight:OnDestroy(func)
-	Starlight.DestroyFunction = func
+function Eventide:OnDestroy(func)
+	Eventide.DestroyFunction = func
 end
 
 -- Destroys The Interface
-function Starlight:Destroy()
+function Eventide:Destroy()
 	task.wait()
-	StarlightUI:Destroy()
+	EventideUI:Destroy()
 end
-StarlightUI.Destroying:Connect(function()
-	pcall(Starlight.DestroyFunction)
+EventideUI.Destroying:Connect(function()
+	pcall(Eventide.DestroyFunction)
 	for i, v in pairs(connections) do
 		v:Disconnect()
 	end
-	if Starlight.Window then
-		for _, tabSection in pairs(Starlight.Window.TabSections) do
+	if Eventide.Window then
+		for _, tabSection in pairs(Eventide.Window.TabSections) do
 			tabSection:Destroy()
 		end
 	end
-	for i, v in pairs(Starlight) do
+	for i, v in pairs(Eventide) do
 		v = nil
 	end
-	if Camera:FindFirstChild("Starlight Blur Elements") then
-		for _, blur in pairs(Camera:FindFirstChild("Starlight Blur Elements"):GetChildren()) do
+	if Camera:FindFirstChild("Eventide Blur Elements") then
+		for _, blur in pairs(Camera:FindFirstChild("Eventide Blur Elements"):GetChildren()) do
 			blur:Destroy()
 		end
-		--Camera:FindFirstChild("Starlight Blur Elements"):Destroy()
+		--Camera:FindFirstChild("Eventide Blur Elements"):Destroy()
 	end
 end)
 
-function Starlight:Notification(data)
+function Eventide:Notification(data)
 	--[[
 	NotificationSettings = {
 		Title = string,
@@ -2216,12 +2217,12 @@ function Starlight:Notification(data)
 
 	--[[if not correctBuild and not warned then
 		warned = true
-		warn('Starlight | Build Mismatch')
-		warn('Starlight may run into issues as it seems you are running an incompatible interface version ('.. (StarlightUI.Resources:FindFirstChild("Build") and StarlightUI.Resources:FindFirstChild("Build").Value or 'No Build') ..'). of Starlight\n\nThis version of Starlight is intended for interface build '..Starlight.InterfaceBuild..'.\nTry rerunning the script. If the issue persists, join our discord for support.')
+		warn('Eventide | Build Mismatch')
+		warn('Eventide may run into issues as it seems you are running an incompatible interface version ('.. (EventideUI.Resources:FindFirstChild("Build") and EventideUI.Resources:FindFirstChild("Build").Value or 'No Build') ..'). of Eventide\n\nThis version of Eventide is intended for interface build '..Eventide.InterfaceBuild..'.\nTry rerunning the script. If the issue persists, join our discord for support.')
 		pcall(function()
-			Starlight:Notification({
-				Title = "Starlight - Build Mistmatch",
-				Content = 'Starlight may run into issues as it seems you are running an incompatible interface version ('.. (StarlightUI.Resources:FindFirstChild("Build") and StarlightUI.Resources:FindFirstChild("Build").Value or 'No Build') ..'). of Starlight\n\nThis version of Starlight is intended for interface build '..Starlight.InterfaceBuild..'. \nTry rerunning the script. If the issue persists, join our discord for support.',
+			Eventide:Notification({
+				Title = "Eventide - Build Mistmatch",
+				Content = 'Eventide may run into issues as it seems you are running an incompatible interface version ('.. (EventideUI.Resources:FindFirstChild("Build") and EventideUI.Resources:FindFirstChild("Build").Value or 'No Build') ..'). of Eventide\n\nThis version of Eventide is intended for interface build '..Eventide.InterfaceBuild..'. \nTry rerunning the script. If the issue persists, join our discord for support.',
 				Icon = 129398364168201
 			})
 		end)
@@ -2233,8 +2234,8 @@ function Starlight:Notification(data)
 		-- Notification Object Creation
 		local newNotification = Resources.Elements.NotificationTemplate:Clone()
 		newNotification.Name = data.Title
-		newNotification.Parent = StarlightUI.Notifications
-		newNotification.LayoutOrder = #StarlightUI.Notifications:GetChildren()
+		newNotification.Parent = EventideUI.Notifications
+		newNotification.LayoutOrder = #EventideUI.Notifications:GetChildren()
 		newNotification.Visible = false
 		local AcrylicObject = Acrylic.AcrylicPaint()
 		pcall(function()
@@ -2285,7 +2286,7 @@ function Starlight:Notification(data)
 
 		-- Calculate textbounds and set initial values
 		newNotification.Size =
-			UDim2.new(1, 0, 0, -StarlightUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset)
+			UDim2.new(1, 0, 0, -EventideUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset)
 
 		newNotification.Visible = true
 
@@ -2293,7 +2294,7 @@ function Starlight:Notification(data)
 		local bounds = newNotification.Description.TextBounds.Y
 		newNotification.Description.Size = UDim2.new(1, -65, 0, bounds + 2)
 		newNotification.Size =
-			UDim2.new(1, 0, 0, -StarlightUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset)
+			UDim2.new(1, 0, 0, -EventideUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset)
 		task.wait()
 		TweenService:Create(
 			newNotification,
@@ -2398,7 +2399,7 @@ function Starlight:Notification(data)
 			task.wait(data.Duration)
 
 			pcall(function()
-				if not Starlight.NotificationsOpen then
+				if not Eventide.NotificationsOpen then
 					newNotification.Icon.Visible = false
 					TweenService:Create(
 						newNotification,
@@ -2454,7 +2455,7 @@ function Starlight:Notification(data)
 								1,
 								-90,
 								0,
-								-StarlightUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset
+								-EventideUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset
 							),
 						},
 						function()
@@ -2464,7 +2465,7 @@ function Starlight:Notification(data)
 					)
 				end
 
-				CollectionService:AddTag(newNotification, "__starlight_ExpiredNotification")
+				CollectionService:AddTag(newNotification, "__eventide_ExpiredNotification")
 			end)
 		end
 		return newNotification
@@ -2472,7 +2473,7 @@ function Starlight:Notification(data)
 end
 
 -- Create the Window
-function Starlight:CreateWindow(WindowSettings)
+function Eventide:CreateWindow(WindowSettings)
 	-- The Options Table
 	--[[
 	
@@ -2533,21 +2534,21 @@ function Starlight:CreateWindow(WindowSettings)
 		and (WindowSettings.BuildWarnings == nil and true or WindowSettings.BuildWarnings)
 	then
 		warned = true
-		warn("Starlight | Build Mismatch")
+		warn("Eventide | Build Mismatch")
 		warn(
-			"Starlight may run into issues as it seems you are running an incompatible interface version ("
-				.. (StarlightUI.Resources:FindFirstChild("Build") and StarlightUI.Resources:FindFirstChild("Build").Value or "No Build")
-				.. "). of Starlight\n\nThis version of Starlight is intended for interface build "
-				.. Starlight.InterfaceBuild
+			"Eventide may run into issues as it seems you are running an incompatible interface version ("
+				.. (EventideUI.Resources:FindFirstChild("Build") and EventideUI.Resources:FindFirstChild("Build").Value or "No Build")
+				.. "). of Eventide\n\nThis version of Eventide is intended for interface build "
+				.. Eventide.InterfaceBuild
 				.. ".\nTry rerunning the script. If the issue persists, join our discord for support."
 		)
 		pcall(function()
-			Starlight:Notification({
-				Title = "Starlight - Build Mistmatch",
-				Content = "Starlight may run into issues as it seems you are running an incompatible interface version ("
-					.. (StarlightUI.Resources:FindFirstChild("Build") and StarlightUI.Resources:FindFirstChild("Build").Value or "No Build")
-					.. "). of Starlight\n\nThis version of Starlight is intended for interface build "
-					.. Starlight.InterfaceBuild
+			Eventide:Notification({
+				Title = "Eventide - Build Mistmatch",
+				Content = "Eventide may run into issues as it seems you are running an incompatible interface version ("
+					.. (EventideUI.Resources:FindFirstChild("Build") and EventideUI.Resources:FindFirstChild("Build").Value or "No Build")
+					.. "). of Eventide\n\nThis version of Eventide is intended for interface build "
+					.. Eventide.InterfaceBuild
 					.. ". \nTry rerunning the script. If the issue persists, join our discord for support.",
 				Icon = 129398364168201,
 			})
@@ -2575,16 +2576,16 @@ function Starlight:CreateWindow(WindowSettings)
 	if WindowSettings.NotifyOnCallbackError == nil then
 		WindowSettings.NotifyOnCallbackError = true
 	end
-	Starlight.FileSystem.AutoloadConfigPath = `{Starlight.FileSystem.Folder}/{folderpath}/configs/`
+	Eventide.FileSystem.AutoloadConfigPath = `{Eventide.FileSystem.Folder}/{folderpath}/configs/`
 	if WindowSettings.FileSettings.ThemesInRoot then
-		Starlight.FileSystem.AutoloadThemePath = `{Starlight.FileSystem.Folder}/{root}/themes/`
+		Eventide.FileSystem.AutoloadThemePath = `{Eventide.FileSystem.Folder}/{root}/themes/`
 	else
-		Starlight.FileSystem.AutoloadThemePath = `{Starlight.FileSystem.Folder}/{folderpath}/themes/`
+		Eventide.FileSystem.AutoloadThemePath = `{Eventide.FileSystem.Folder}/{folderpath}/themes/`
 	end
 
-	Starlight.FileSystem:BuildFolderTree(WindowSettings.FileSettings)
+	Eventide.FileSystem:BuildFolderTree(WindowSettings.FileSettings)
 
-	Starlight.Window = {
+	Eventide.Window = {
 		Instance = mainWindow,
 		TabSections = {},
 		CurrentTab = nil,
@@ -2602,8 +2603,8 @@ function Starlight:CreateWindow(WindowSettings)
 			AcrylicObject.AddParent(mainWindow)
 			AcrylicObject.Frame.Parent = mainWindow
 			AcrylicObject.Model.Size = Vector3.new(1.0, 1.032, 0.001)
-			AcrylicObject2.AddParent(StarlightUI.MobileToggle)
-			AcrylicObject2.Frame.Parent = StarlightUI.MobileToggle
+			AcrylicObject2.AddParent(EventideUI.MobileToggle)
+			AcrylicObject2.Frame.Parent = EventideUI.MobileToggle
 			AcrylicObject2.Model.Size = Vector3.new(1.0, 1.0, 0.001)
 		end)
 
@@ -2623,8 +2624,8 @@ function Starlight:CreateWindow(WindowSettings)
 				for _, cornerrepair in pairs(mainWindow.Sidebar.CornerRepairs:GetChildren()) do
 					Tween(cornerrepair, { ImageTransparency = 0.45 })
 				end
-				Tween(StarlightUI.MobileToggle.Backdrop, { BackgroundTransparency = 0.5 })
-				Tween(StarlightUI.MobileToggle.Backdrop.UIStroke, { Transparency = 0.5 })
+				Tween(EventideUI.MobileToggle.Backdrop, { BackgroundTransparency = 0.5 })
+				Tween(EventideUI.MobileToggle.Backdrop.UIStroke, { Transparency = 0.5 })
 				AcrylicObject.Frame.shadow.Visible = true
 			else
 				Tween(mainWindow, { BackgroundTransparency = 0 })
@@ -2640,8 +2641,8 @@ function Starlight:CreateWindow(WindowSettings)
 				for _, cornerrepair in pairs(mainWindow.Sidebar.CornerRepairs:GetChildren()) do
 					Tween(cornerrepair, { ImageTransparency = 0 })
 				end
-				Tween(StarlightUI.MobileToggle.Backdrop, { BackgroundTransparency = 0 })
-				Tween(StarlightUI.MobileToggle.Backdrop.UIStroke, { Transparency = 0 })
+				Tween(EventideUI.MobileToggle.Backdrop, { BackgroundTransparency = 0 })
+				Tween(EventideUI.MobileToggle.Backdrop.UIStroke, { Transparency = 0 })
 				AcrylicObject.Frame.shadow.Visible = false
 			end
 		end)
@@ -2663,27 +2664,27 @@ function Starlight:CreateWindow(WindowSettings)
 		mainWindow.Sidebar.Icon.Image = WindowSettings.Icon ~= nil and "rbxassetid://" .. WindowSettings.Icon or ""
 		mainWindow.Sidebar.Header.Text = WindowSettings.Name or ""
 		mainWindow.Content.Topbar.Headers.Subheader.Text = WindowSettings.Subtitle or ""
-		StarlightUI.MobileToggle.Image = WindowSettings.Icon ~= nil and "rbxassetid://" .. WindowSettings.Icon
+		EventideUI.MobileToggle.Image = WindowSettings.Icon ~= nil and "rbxassetid://" .. WindowSettings.Icon
 			or "rbxassetid://6031097229"
 
 		local size = mainWindow.Size
 		mainWindow.Size = WindowSettings.LoadingEnabled and UDim2.fromOffset(500, 325) or mainWindow.Size
-		StarlightUI.MainWindow.Position = UDim2.fromOffset(
-			Camera.ViewportSize.X / 2 - StarlightUI.MainWindow.Size.X.Offset / 2,
-			((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2) - (GuiInset / 2)
+		EventideUI.MainWindow.Position = UDim2.fromOffset(
+			Camera.ViewportSize.X / 2 - EventideUI.MainWindow.Size.X.Offset / 2,
+			((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2) - (GuiInset / 2)
 		)
-		StarlightUI.Drag.Position = UDim2.new(
+		EventideUI.Drag.Position = UDim2.new(
 			0.5,
 			0,
 			0,
-			((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2)
+			((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2)
 			- (GuiInset / 2)
 				+ mainWindow.Size.Y.Offset
 				+ 10
 		)
 
 		mainWindow.ModalOverlay.Visible = false
-		--[[mainWindow["Loading Screen"].Version.Text = WindowSettings.LoadingSettings.Title == "Starlight Interface Suite" and Release or "Starlight Interface Suite " .. Release
+		--[[mainWindow["Loading Screen"].Version.Text = WindowSettings.LoadingSettings.Title == "Eventide Interface Suite" and Release or "Eventide Interface Suite " .. Release
 		mainWindow["Loading Screen"].Frame.SubFrame.Title.Text = WindowSettings.LoadingSettings.Title or ""
 		mainWindow["Loading Screen"].Frame.SubFrame.Subtitle.Text = WindowSettings.LoadingSettings.Subtitle or ""]]
 		if WindowSettings.LoadingSettings then
@@ -2724,9 +2725,9 @@ function Starlight:CreateWindow(WindowSettings)
 
 		-- Theme Binding
 		do
-			ThemeMethods.bindTheme(StarlightUI.MobileToggle.Backdrop, "BackgroundColor3", "Backgrounds.Dark")
-			ThemeMethods.bindTheme(StarlightUI.MobileToggle.Backdrop.UIStroke, "Color", "Foregrounds.Dark")
-			for _, shadow in pairs(StarlightUI.MobileToggle.Backdrop.DropShadowHolder:GetChildren()) do
+			ThemeMethods.bindTheme(EventideUI.MobileToggle.Backdrop, "BackgroundColor3", "Backgrounds.Dark")
+			ThemeMethods.bindTheme(EventideUI.MobileToggle.Backdrop.UIStroke, "Color", "Foregrounds.Dark")
+			for _, shadow in pairs(EventideUI.MobileToggle.Backdrop.DropShadowHolder:GetChildren()) do
 				ThemeMethods.bindTheme(shadow, "ImageColor3", "Miscellaneous.Shadow")
 			end
 
@@ -2764,7 +2765,7 @@ function Starlight:CreateWindow(WindowSettings)
 				ThemeMethods.bindTheme(cornerrepair, "ImageColor3", "Backgrounds.Dark")
 			end
 
-			ThemeMethods.bindTheme(StarlightUI.Drag.DragCosmetic, "BackgroundColor3", "Foregrounds.Light")
+			ThemeMethods.bindTheme(EventideUI.Drag.DragCosmetic, "BackgroundColor3", "Foregrounds.Light")
 
 			ThemeMethods.bindTheme(mainWindow["New Loading Screen"], "BackgroundColor3", "Backgrounds.Medium")
 			for _, shadow in pairs(mainWindow["New Loading Screen"].shadows:GetChildren()) do
@@ -2803,8 +2804,8 @@ function Starlight:CreateWindow(WindowSettings)
 		task.spawn(function()
 			if WindowSettings.LoadingEnabled then
 				mainWindow.Visible = true
-				StarlightUI.Drag.Visible = true
-				StarlightUI.MobileToggle.Visible = UserInputService.TouchEnabled
+				EventideUI.Drag.Visible = true
+				EventideUI.MobileToggle.Visible = UserInputService.TouchEnabled
 					--and not UserInputService.KeyboardEnabled
 
 				local main = mainWindow["New Loading Screen"]
@@ -2821,15 +2822,15 @@ function Starlight:CreateWindow(WindowSettings)
 				local subtitle = textLabels.Subtitle
 				local title = textLabels.Title
 
-				StarlightUI.MainWindow.Position = UDim2.fromOffset(
-					Camera.ViewportSize.X / 2 - StarlightUI.MainWindow.Size.X.Offset / 2,
-					((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2) - (GuiInset / 2)
+				EventideUI.MainWindow.Position = UDim2.fromOffset(
+					Camera.ViewportSize.X / 2 - EventideUI.MainWindow.Size.X.Offset / 2,
+					((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2) - (GuiInset / 2)
 				)
-				StarlightUI.Drag.Position = UDim2.new(
+				EventideUI.Drag.Position = UDim2.new(
 					0.5,
 					0,
 					0,
-					((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2)
+					((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2)
 					- (GuiInset / 2)
 						+ mainWindow.Size.Y.Offset
 						+ 10
@@ -2847,8 +2848,8 @@ function Starlight:CreateWindow(WindowSettings)
 				title.TextTransparency = 1
 
 				title.Text = WindowSettings.LoadingSettings and WindowSettings.LoadingSettings.Title
-					or "Starlight Interface Suite"
-				versionLabel.Text = title.Text == "Starlight Interface Suite" and Release or `Starlight UI {Release}`
+					or "Eventide Interface Suite"
+				versionLabel.Text = title.Text == "Eventide Interface Suite" and Release or `Eventide UI {Release}`
 				title.playerName.Text = Player.DisplayName
 				playerIcon.Image = Players:GetUserThumbnailAsync(
 					Player.UserId,
@@ -2896,7 +2897,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 				subtitle.Text = WindowSettings.LoadingSettings
 					and (WindowSettings.LoadingSettings.Subtitle or WindowSettings.LoadingSettings.Title)
-					or "Welcome To Starlight!"
+					or "Welcome To Eventide!"
 				Tween(title, { TextTransparency = 1 }, nil, Tween.Info("Quint", "InOut", 0.2))
 				Tween(title.playerName, { Position = UDim2.new(0, -8, 0, 0) }, nil, Tween.Info("Quint", "InOut", 0.85))
 				Tween(
@@ -2916,7 +2917,7 @@ function Starlight:CreateWindow(WindowSettings)
 						((Camera.ViewportSize.Y / 2 - GuiInset) - size.Y.Offset / 2) - (GuiInset / 2)
 					),
 				}, nil, Tween.Info(nil, nil, 1.1))
-				Tween(StarlightUI.Drag, {
+				Tween(EventideUI.Drag, {
 					Position = UDim2.new(
 						0.5,
 						0,
@@ -2968,27 +2969,27 @@ function Starlight:CreateWindow(WindowSettings)
 			Tween(mainWindow, {
 				Size = UDim2.fromOffset(mainWindow.Size.X.Offset + 65, mainWindow.Size.Y.Offset + 55),
 				Position = UDim2.fromOffset(
-					Camera.ViewportSize.X / 2 - StarlightUI.MainWindow.Size.X.Offset / 2 - 65/2,
-					((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2) - (GuiInset/2) - 55/2
+					Camera.ViewportSize.X / 2 - EventideUI.MainWindow.Size.X.Offset / 2 - 65/2,
+					((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2) - (GuiInset/2) - 55/2
 				)
 			})
-			Tween(StarlightUI.Drag, {
-				Position = UDim2.new(0.5, 0, 0, ((Camera.ViewportSize.Y / 2 - GuiInset) - StarlightUI.MainWindow.Size.Y.Offset / 2) - (GuiInset/2) + mainWindow.Size.Y.Offset + 10)
+			Tween(EventideUI.Drag, {
+				Position = UDim2.new(0.5, 0, 0, ((Camera.ViewportSize.Y / 2 - GuiInset) - EventideUI.MainWindow.Size.Y.Offset / 2) - (GuiInset/2) + mainWindow.Size.Y.Offset + 10)
 			})]]
 			end
 
 			mainWindow["New Loading Screen"].Visible = false
 
 			mainWindow.Visible = true
-			StarlightUI.Drag.Visible = true
-			StarlightUI.MobileToggle.Visible = UserInputService.TouchEnabled
+			EventideUI.Drag.Visible = true
+			EventideUI.MobileToggle.Visible = UserInputService.TouchEnabled
 		end)
 
-		makeDraggable(mainWindow.Content.Topbar, mainWindow, StarlightUI.Drag)
-		makeDraggable(mainWindow.Sidebar, mainWindow, StarlightUI.Drag)
-		makeDraggable(StarlightUI.MobileToggle, StarlightUI.MobileToggle, nil)
-		if StarlightUI.Drag then
-			makeDraggable(StarlightUI.Drag.Interact, mainWindow, StarlightUI.Drag, true, nil, StarlightUI.Drag)
+		makeDraggable(mainWindow.Content.Topbar, mainWindow, EventideUI.Drag)
+		makeDraggable(mainWindow.Sidebar, mainWindow, EventideUI.Drag)
+		makeDraggable(EventideUI.MobileToggle, EventideUI.MobileToggle, nil)
+		if EventideUI.Drag then
+			makeDraggable(EventideUI.Drag.Interact, mainWindow, EventideUI.Drag, true, nil, EventideUI.Drag)
 		end
 
 		--if not WindowSettings.LoadingEnabled then task.wait(.15) end
@@ -2997,7 +2998,7 @@ function Starlight:CreateWindow(WindowSettings)
 	--// ENDSUBSECTION
 	--// SUBSECTION : User Methods
 
-	function Starlight.Window:PromptDialog(ModalSettings)
+	function Eventide.Window:PromptDialog(ModalSettings)
 		--[[
 		Name = "Header",
    		Content = "Description",
@@ -3136,10 +3137,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local Success, Response = pcall(Action.Callback)
 
 						if not Success then
-							warn(`Starlight Interface Suite - Callback Error | Dialog {Modal.Values.Name}`)
+							warn(`Eventide Interface Suite - Callback Error | Dialog {Modal.Values.Name}`)
 							print(Response)
 							if WindowSettings.NotifyOnCallbackError then
-								Starlight:Notification({
+								Eventide:Notification({
 									Title = Modal.Values.Name .. " Callback Error",
 									Content = tostring(Response),
 									Icon = 129398364168201,
@@ -3181,10 +3182,10 @@ function Starlight:CreateWindow(WindowSettings)
 							end)
 
 							if not Success then
-								warn(`Starlight Interface Suite - Callback Error | Dialog {Modal.Values.Name}`)
+								warn(`Eventide Interface Suite - Callback Error | Dialog {Modal.Values.Name}`)
 								print(Response)
 								if WindowSettings.NotifyOnCallbackError then
-									Starlight:Notification({
+									Eventide:Notification({
 										Title = Modal.Values.Name .. " Callback Error",
 										Content = tostring(Response),
 										Icon = 129398364168201,
@@ -3206,10 +3207,10 @@ function Starlight:CreateWindow(WindowSettings)
 				end)
 
 				ActionInput.MouseEnter:Connect(function()
-					Tween(ActionInput.UIStroke, { Color = Starlight.CurrentTheme.Foregrounds.DarkHover })
+					Tween(ActionInput.UIStroke, { Color = Eventide.CurrentTheme.Foregrounds.DarkHover })
 				end)
 				ActionInput.MouseLeave:Connect(function()
-					Tween(ActionInput.UIStroke, { Color = Starlight.CurrentTheme.Foregrounds.Dark })
+					Tween(ActionInput.UIStroke, { Color = Eventide.CurrentTheme.Foregrounds.Dark })
 				end)
 
 				if Action.Numeric then
@@ -3251,7 +3252,7 @@ function Starlight:CreateWindow(WindowSettings)
 	local prebuiltTabSection = nil
 
 	local homeTabCalled: boolean? = false
-	function Starlight.Window:CreateHomeTab(TabSettings)
+	function Eventide.Window:CreateHomeTab(TabSettings)
 		TabSettings.UnsupportedExecutors = TabSettings.UnsupportedExecutors or {}
 		TabSettings.SupportedExecutors = TabSettings.SupportedExecutors or {}
 		TabSettings.DiscordInvite = TabSettings.DiscordInvite or ""
@@ -3274,7 +3275,7 @@ function Starlight:CreateWindow(WindowSettings)
 		}
 
 		if not prebuiltTabSection then
-			prebuiltTabSection = Starlight.Window:CreateTabSection()
+			prebuiltTabSection = Eventide.Window:CreateTabSection()
 			prebuiltTabSection.Instance.LayoutOrder = -1
 		end
 
@@ -3296,12 +3297,12 @@ function Starlight:CreateWindow(WindowSettings)
 
 		local function Activate() -- so i dont have to rewrite shit again
 			Tween(Tab.Instances.Button, { BackgroundTransparency = 0.5 })
-			Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Light })
-			Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Light })
+			Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Light })
+			Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Light })
 			Tab.Instances.Button.Icon.AccentBrighter.Enabled = true
 			Tab.Instances.Button.Header.AccentBrighter.Enabled = true
 
-			for i, v in pairs(Starlight.Window.TabSections) do
+			for i, v in pairs(Eventide.Window.TabSections) do
 				for _, tab in pairs(v.Tabs) do
 					tab.Active = false
 				end
@@ -3311,8 +3312,8 @@ function Starlight:CreateWindow(WindowSettings)
 				for _, OtherTab in pairs(OtherTabSection:GetChildren()) do
 					if OtherTab.ClassName == "Frame" and OtherTab ~= Tab.Instances.Button then
 						Tween(OtherTab, { BackgroundTransparency = 1 })
-						Tween(OtherTab.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
-						Tween(OtherTab.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
+						Tween(OtherTab.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
+						Tween(OtherTab.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
 						OtherTab.Icon.AccentBrighter.Enabled = false
 						OtherTab.Header.AccentBrighter.Enabled = false
 					end
@@ -3320,7 +3321,7 @@ function Starlight:CreateWindow(WindowSettings)
 			end
 
 			Tab.Active = true
-			Starlight.Window.CurrentTab = Tab
+			Eventide.Window.CurrentTab = Tab
 			tabs.UIPageLayout:JumpTo(Tab.Instances.Page)
 		end
 
@@ -3334,16 +3335,16 @@ function Starlight:CreateWindow(WindowSettings)
 		Tab.Instances.Button.MouseEnter:Connect(function()
 			Tab.Hover = true
 			if not Tab.Active then
-				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Light })
-				Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Light })
+				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Light })
+				Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Light })
 			end
 		end)
 
 		Tab.Instances.Button.MouseLeave:Connect(function()
 			Tab.Hover = false
 			if not Tab.Active then
-				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
-				Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
+				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
+				Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
 			end
 		end)
 
@@ -3641,7 +3642,7 @@ function Starlight:CreateWindow(WindowSettings)
 		return Tab
 	end
 
-	function Starlight.Window:CreateTabSection(Name: string, Visible)
+	function Eventide.Window:CreateTabSection(Name: string, Visible)
 		Visible = Visible or (Name ~= nil and true or false)
 		Name = Name or "Empty Section"
 
@@ -3669,7 +3670,7 @@ function Starlight:CreateWindow(WindowSettings)
 			Name = NewName
 			TabSection.Instance.Header.Text = Name
 			TabSection.Instance.Name = "TAB_SECTION_" .. Name
-			Starlight.Window.TabSections[Name] = TabSection
+			Eventide.Window.TabSections[Name] = TabSection
 		end
 
 		function TabSection:Destroy()
@@ -3727,12 +3728,12 @@ function Starlight:CreateWindow(WindowSettings)
 
 			local function Activate() -- so i dont have to rewrite shit again
 				Tween(Tab.Instances.Button, { BackgroundTransparency = 0.5 })
-				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Light })
-				Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Light })
+				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Light })
+				Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Light })
 				Tab.Instances.Button.Icon.AccentBrighter.Enabled = true
 				Tab.Instances.Button.Header.AccentBrighter.Enabled = true
 
-				for i, v in pairs(Starlight.Window.TabSections) do
+				for i, v in pairs(Eventide.Window.TabSections) do
 					for _, tab in pairs(v.Tabs) do
 						tab.Active = false
 					end
@@ -3742,8 +3743,8 @@ function Starlight:CreateWindow(WindowSettings)
 					for _, OtherTab in pairs(OtherTabSection:GetChildren()) do
 						if OtherTab.ClassName == "Frame" and OtherTab ~= Tab.Instances.Button then
 							Tween(OtherTab, { BackgroundTransparency = 1 })
-							Tween(OtherTab.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
-							Tween(OtherTab.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
+							Tween(OtherTab.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
+							Tween(OtherTab.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
 							OtherTab.Icon.AccentBrighter.Enabled = false
 							OtherTab.Header.AccentBrighter.Enabled = false
 						end
@@ -3751,11 +3752,11 @@ function Starlight:CreateWindow(WindowSettings)
 				end
 
 				Tab.Active = true
-				Starlight.Window.CurrentTab = Tab
+				Eventide.Window.CurrentTab = Tab
 				tabs.UIPageLayout:JumpTo(Tab.Instances.Page)
 			end
 
-			if Starlight.Window.CurrentTab == nil then
+			if Eventide.Window.CurrentTab == nil then
 				--task.spawn(function()
 				repeat
 					task.wait()
@@ -3769,16 +3770,16 @@ function Starlight:CreateWindow(WindowSettings)
 			Tab.Instances.Button.MouseEnter:Connect(function()
 				Tab.Hover = true
 				if not Tab.Active then
-					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Light })
-					Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Light })
+					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Light })
+					Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Light })
 				end
 			end)
 
 			Tab.Instances.Button.MouseLeave:Connect(function()
 				Tab.Hover = false
 				if not Tab.Active then
-					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
-					Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
+					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
+					Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
 				end
 			end)
 
@@ -3824,7 +3825,7 @@ function Starlight:CreateWindow(WindowSettings)
 				Tab.Instances.Button.Name = "TAB_" .. TabIndex
 				Tab.Instances.Page.Name = "TAB_" .. TabIndex
 				Tab.Instances.Button.Icon.Image = "rbxassetid://" .. TabSettings.Icon
-				Starlight.Window.TabSections[Name].Tabs[TabIndex].Values = Tab.Values
+				Eventide.Window.TabSections[Name].Tabs[TabIndex].Values = Tab.Values
 			end
 
 			function Tab:Destroy()
@@ -3838,9 +3839,9 @@ function Starlight:CreateWindow(WindowSettings)
 
 			--// ENDSUBSECTION
 
-			Tab.Instances.Button.Parent = Starlight.Window.TabSections[Name].Instance
-			Starlight.Window.TabSections[Name].Tabs[TabIndex] = Tab
-			return Starlight.Window.TabSections[Name].Tabs[TabIndex]
+			Tab.Instances.Button.Parent = Eventide.Window.TabSections[Name].Instance
+			Eventide.Window.TabSections[Name].Tabs[TabIndex] = Tab
+			return Eventide.Window.TabSections[Name].Tabs[TabIndex]
 		end
 
 		function TabSection:CreateTab(TabSettings, TabIndex)
@@ -3890,12 +3891,12 @@ function Starlight:CreateWindow(WindowSettings)
 
 			local function Activate() -- so i dont have to rewrite shit again
 				Tween(Tab.Instances.Button, { BackgroundTransparency = 0.5 })
-				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Light })
-				Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Light })
+				Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Light })
+				Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Light })
 				Tab.Instances.Button.Icon.AccentBrighter.Enabled = true
 				Tab.Instances.Button.Header.AccentBrighter.Enabled = true
 
-				for i, v in pairs(Starlight.Window.TabSections) do
+				for i, v in pairs(Eventide.Window.TabSections) do
 					for _, tab in pairs(v.Tabs) do
 						tab.Active = false
 					end
@@ -3905,8 +3906,8 @@ function Starlight:CreateWindow(WindowSettings)
 					for _, OtherTab in pairs(OtherTabSection:GetChildren()) do
 						if OtherTab.ClassName == "Frame" and OtherTab ~= Tab.Instances.Button then
 							Tween(OtherTab, { BackgroundTransparency = 1 })
-							Tween(OtherTab.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
-							Tween(OtherTab.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
+							Tween(OtherTab.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
+							Tween(OtherTab.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
 							OtherTab.Icon.AccentBrighter.Enabled = false
 							OtherTab.Header.AccentBrighter.Enabled = false
 						end
@@ -3914,11 +3915,11 @@ function Starlight:CreateWindow(WindowSettings)
 				end
 
 				Tab.Active = true
-				Starlight.Window.CurrentTab = Tab
+				Eventide.Window.CurrentTab = Tab
 				tabs.UIPageLayout:JumpTo(Tab.Instances.Page)
 			end
 
-			if Starlight.Window.CurrentTab == nil then
+			if Eventide.Window.CurrentTab == nil then
 				--task.spawn(function()
 				repeat
 					task.wait()
@@ -3932,16 +3933,16 @@ function Starlight:CreateWindow(WindowSettings)
 			Tab.Instances.Button.MouseEnter:Connect(function()
 				Tab.Hover = true
 				if not Tab.Active then
-					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Light })
-					Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Light })
+					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Light })
+					Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Light })
 				end
 			end)
 
 			Tab.Instances.Button.MouseLeave:Connect(function()
 				Tab.Hover = false
 				if not Tab.Active then
-					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
-					Tween(Tab.Instances.Button.Header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
+					Tween(Tab.Instances.Button.Icon, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
+					Tween(Tab.Instances.Button.Header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
 				end
 			end)
 
@@ -4054,7 +4055,7 @@ function Starlight:CreateWindow(WindowSettings)
 				Tab.Instances.Button.Name = "TAB_" .. TabIndex
 				Tab.Instances.Page.Name = "TAB_" .. TabIndex
 				Tab.Instances.Button.Icon.Image = "rbxassetid://" .. TabSettings.Icon
-				Starlight.Window.TabSections[Name].Tabs[TabIndex].Values = Tab.Values
+				Eventide.Window.TabSections[Name].Tabs[TabIndex].Values = Tab.Values
 			end
 
 			function Tab:Destroy()
@@ -4212,7 +4213,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Groupbox.Instance.Name = "GROUPBOX_" .. GroupIndex
 					Groupbox.Instance.Parent = Tab.Instances.Page["Column_" .. NewGroupboxSettings.Column]
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Values =
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Values =
 						NewGroupboxSettings
 				end
 
@@ -4272,7 +4273,7 @@ function Starlight:CreateWindow(WindowSettings)
 						ElementSettings = NewElementSettings
 
 						Element.Values = ElementSettings
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = ElementSettings
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = ElementSettings
 
 						Element.Instance.Name = "BUTTON_" .. ElementSettings.Name
 						Element.Instance["PART_Backdrop"].Header.Text = ElementSettings.Name
@@ -4283,7 +4284,7 @@ function Starlight:CreateWindow(WindowSettings)
 							Element.Instance["PART_Backdrop"].Header.UIPadding.PaddingLeft = UDim.new(0,32)
 						end
 						Element.Instance["PART_Backdrop"].Header.Icon.Image = ElementSettings.Icon ~= nil and "rbxassetid://" .. Element.Values.Icon or ""
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
 					end
 
 					function Element:Destroy()
@@ -4308,7 +4309,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 						if not Success then
 							Element.Instance["PART_Backdrop"].Header.Text = "Callback Error"
-							warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+							warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 							print(tostring(Response))
 							wait(0.5)
 							Element.Instance["PART_Backdrop"].Header.Text = ElementSettings.Name
@@ -4329,8 +4330,8 @@ function Starlight:CreateWindow(WindowSettings)
 						Groupbox.Instance["PART_Backdrop"].Size = UDim2.new(1,0,0, Groupbox.Instance["PART_Backdrop"].AbsoluteSize.Y)
 					end
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
 				end
 
 				function Groupbox:CreateSecondaryButton(ElementSettings) -- these will be merged in the next update where we allow style changing.
@@ -4364,7 +4365,7 @@ function Starlight:CreateWindow(WindowSettings)
 						ElementSettings = NewElementSettings
 
 						Element.Values = ElementSettings
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = ElementSettings
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = ElementSettings
 
 						Element.Instance.Name = "BUTTON_" .. ElementSettings.Name
 						Element.Instance["PART_Backdrop"].Header.Text = ElementSettings.Name
@@ -4375,7 +4376,7 @@ function Starlight:CreateWindow(WindowSettings)
 							Element.Instance["PART_Backdrop"].Header.UIPadding.PaddingLeft = UDim.new(0,32)
 						end
 						Element.Instance["PART_Backdrop"].Header.Icon.Image = ElementSettings.Icon ~= nil and "rbxassetid://" .. Element.Values.Icon or ""
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
 					end
 
 					function Element:Destroy()
@@ -4395,15 +4396,15 @@ function Starlight:CreateWindow(WindowSettings)
 
 						if not Success then
 							Element.Instance["PART_Backdrop"].Header.Text = "Callback Error"
-							warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+							warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 							print(tostring(Response))
 							wait(0.5)
 							Element.Instance["PART_Backdrop"].Header.Text = ElementSettings.Name
 						end
 					end)
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
 				end
 
 				function Groupbox:CreateCheckbox(ElementSettings) -- will be merged with switch in next update via styles. adding a checkbox icon soon
@@ -4462,7 +4463,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 							if not Success then
 								Element.Instance.Header.Text = "Callback Error"
-								warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+								warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 								print(tostring(Response))
 								wait(0.5)
 								Element.Instance.Header.Text = ElementSettings.Name
@@ -4490,7 +4491,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 						if not Success then
 							Element.Instance.Header.Text = "Callback Error"
-							warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+							warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 							print(tostring(Response))
 							wait(0.5)
 							Element.Instance.Header.Text = ElementSettings.Name
@@ -4518,15 +4519,15 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 						Element.Instance.Header.Icon.Image = ElementSettings.Icon ~= nil and "rbxassetid://" .. Element.Values.Icon or ""
 
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
 					end
 
 					function Element:Destroy()
 						Element.Instance:Destroy()
 					end
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
 				end
 
 				function Groupbox:CreateSwitch(ElementSettings)
@@ -4595,7 +4596,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 							if not Success then
 								Element.Instance.Header.Text = "Callback Error"
-								warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+								warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 								print(tostring(Response))
 								wait(0.5)
 								Element.Instance.Header.Text = ElementSettings.Name
@@ -4613,7 +4614,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 						if not Success then
 							Element.Instance.Header.Text = "Callback Error"
-							warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+							warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 							print(tostring(Response))
 							wait(0.5)
 							Element.Instance.Header.Text = ElementSettings.Name
@@ -4641,15 +4642,15 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 						Element.Instance.Header.Icon.Image = ElementSettings.Icon ~= nil and "rbxassetid://" .. Element.Values.Icon or ""
 
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
 					end
 
 					function Element:Destroy()
 						Element.Instance:Destroy()
 					end
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
 				end
 
 
@@ -4852,8 +4853,8 @@ function Starlight:CreateWindow(WindowSettings)
 						Element.Instance:Destroy()
 					end
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
 				end
 
 				function Groupbox:CreateBind(ElementSettings) -- will be merged with toggles and labels soon
@@ -4919,7 +4920,7 @@ function Starlight:CreateWindow(WindowSettings)
 						if CheckingForKey then
 
 							if input.UserInputType == Enum.UserInputType.Keyboard then
-								if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= Enum.KeyCode[Starlight.WindowKeybind] then
+								if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= Enum.KeyCode[Eventide.WindowKeybind] then
 									local SplitMessage = string.split(tostring(input.KeyCode), ".")
 									local NewKeyNoEnum = SplitMessage[3]
 									Element.Instance.Bind.Text = tostring(NewKeyNoEnum)
@@ -4930,7 +4931,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 									if not Success then
 										Element.Instance.Header.Text = "Callback Error"
-										warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+										warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 										print(tostring(Response))
 										wait(0.5)
 										Element.Instance.Header.Text = ElementSettings.Name
@@ -4948,7 +4949,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 									if not Success then
 										Element.Instance.Header.Text = "Callback Error"
-										warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+										warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 										print(tostring(Response))
 										wait(0.5)
 										Element.Instance.Header.Text = ElementSettings.Name
@@ -4963,7 +4964,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 									if not Success then
 										Element.Instance.Header.Text = "Callback Error"
-										warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+										warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 										print(tostring(Response))
 										wait(0.5)
 										Element.Instance.Header.Text = ElementSettings.Name
@@ -5004,7 +5005,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 								if not Success then
 									Element.Instance.Header.Text = "Callback Error"
-									warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+									warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 									print(tostring(Response))
 									wait(0.5)
 									Element.Instance.Header.Text = ElementSettings.Name
@@ -5020,7 +5021,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 											if not Success then
 												Element.Instance.Header.Text = "Callback Error"
-												warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+												warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 												print(tostring(Response))
 												wait(0.5)
 												Element.Instance.Header.Text = ElementSettings.Name
@@ -5033,7 +5034,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 											if not Success then
 												Element.Instance.Header.Text = "Callback Error"
-												warn("Starlight Interface Suite | "..ElementSettings.Name.." Callback Error")
+												warn("Eventide Interface Suite | "..ElementSettings.Name.." Callback Error")
 												print(tostring(Response))
 												wait(0.5)
 												Element.Instance.Header.Text = ElementSettings.Name
@@ -5068,15 +5069,15 @@ function Starlight:CreateWindow(WindowSettings)
 
 						Element.Instance.Bind.Text = ElementSettings.CurrentValue
 
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name].Values = ElementSettings
 					end
 
 					function Element:Destroy()
 						Element.Instance:Destroy()
 					end
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ElementSettings.Name]
 				end
 				
 
@@ -5250,10 +5251,10 @@ function Starlight:CreateWindow(WindowSettings)
 
 								if not Success then
 									ElementInstance["PART_Backdrop"].Header.Header.Text = "Callback Error"
-									warn(`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
+									warn(`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
 									print(Response)
 									if WindowSettings.NotifyOnCallbackError then
-										Starlight:Notification({
+										Eventide:Notification({
 											Title = Element.Values.Name .. " Callback Error",
 											Content = tostring(Response),
 											Icon = 129398364168201,
@@ -5307,7 +5308,7 @@ function Starlight:CreateWindow(WindowSettings)
 								Element.Instance = ElementInstance.Visible and ElementInstance or Element.Instance
 							end
 
-							Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["BUTTON_" .. Index].Values =
+							Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["BUTTON_" .. Index].Values =
 								Element.Values
 						end
 
@@ -5340,9 +5341,9 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 					end)
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["BUTTON_" .. Index] =
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["BUTTON_" .. Index] =
 						Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["BUTTON_" .. Index]
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["BUTTON_" .. Index]
 				end
 
 				function Groupbox:CreateToggle(ElementSettings, Index)
@@ -5387,7 +5388,7 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 
 						local tooltips = {}
-						local knobcolor = Starlight.CurrentTheme.Foregrounds.Medium
+						local knobcolor = Eventide.CurrentTheme.Foregrounds.Medium
 
 						local function Set(bool)
 							if bool then
@@ -5401,7 +5402,7 @@ function Starlight:CreateWindow(WindowSettings)
 									Instances.Style2.Switch.Knob,
 									{
 										Position = UDim2.new(0, 20, 0.5, 0),
-										BackgroundColor3 = Starlight.CurrentTheme.Foregrounds.Active,
+										BackgroundColor3 = Eventide.CurrentTheme.Foregrounds.Active,
 										BackgroundTransparency = 0,
 									}
 								)
@@ -5480,11 +5481,11 @@ function Starlight:CreateWindow(WindowSettings)
 									if not Success then
 										ElementInstance.Header.Text = "Callback Error"
 										warn(
-											`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
+											`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
 										)
 										print(Response)
 										if WindowSettings.NotifyOnCallbackError then
-											Starlight:Notification({
+											Eventide:Notification({
 												Title = Element.Values.Name .. " Callback Error",
 												Content = tostring(Response),
 												Icon = 129398364168201,
@@ -5516,11 +5517,11 @@ function Starlight:CreateWindow(WindowSettings)
 									if not Success then
 										ElementInstance.Header.Text = "Callback Error"
 										warn(
-											`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
+											`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
 										)
 										print(Response)
 										if WindowSettings.NotifyOnCallbackError then
-											Starlight:Notification({
+											Eventide:Notification({
 												Title = Element.Values.Name .. " Callback Error",
 												Content = tostring(Response),
 												Icon = 129398364168201,
@@ -5566,11 +5567,11 @@ function Starlight:CreateWindow(WindowSettings)
 									if not Success then
 										ElementInstance.Header.Text = "Callback Error"
 										warn(
-											`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
+											`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
 										)
 										print(Response)
 										if WindowSettings.NotifyOnCallbackError then
-											Starlight:Notification({
+											Eventide:Notification({
 												Title = Element.Values.Name .. " Callback Error",
 												Content = tostring(Response),
 												Icon = 129398364168201,
@@ -5582,7 +5583,7 @@ function Starlight:CreateWindow(WindowSettings)
 								end
 
 								ElementInstance.Switch.MouseEnter:Connect(function()
-									knobcolor = Starlight.CurrentTheme.Foregrounds.MediumHover
+									knobcolor = Eventide.CurrentTheme.Foregrounds.MediumHover
 									if not Element.Values.CurrentValue then
 										Tween(ElementInstance.Switch, { BackgroundColor3 = knobcolor })
 										Tween(ElementInstance.Switch.Knob, { BackgroundColor3 = knobcolor })
@@ -5590,7 +5591,7 @@ function Starlight:CreateWindow(WindowSettings)
 									end
 								end)
 								ElementInstance.Switch.MouseLeave:Connect(function()
-									knobcolor = Starlight.CurrentTheme.Foregrounds.Medium
+									knobcolor = Eventide.CurrentTheme.Foregrounds.Medium
 									if not Element.Values.CurrentValue then
 										Tween(ElementInstance.Switch, { BackgroundColor3 = knobcolor })
 										Tween(ElementInstance.Switch.Knob, { BackgroundColor3 = knobcolor })
@@ -5608,11 +5609,11 @@ function Starlight:CreateWindow(WindowSettings)
 									if not Success then
 										ElementInstance.Header.Text = "Callback Error"
 										warn(
-											`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
+											`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
 										)
 										print(Response)
 										if WindowSettings.NotifyOnCallbackError then
-											Starlight:Notification({
+											Eventide:Notification({
 												Title = Element.Values.Name .. " Callback Error",
 												Content = tostring(Response),
 												Icon = 129398364168201,
@@ -5670,10 +5671,10 @@ function Starlight:CreateWindow(WindowSettings)
 								for _, ElementInstance in pairs(Instances) do
 									ElementInstance.Header.Text = "Callback Error"
 								end
-								warn(`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
+								warn(`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
 								print(Response)
 								if WindowSettings.NotifyOnCallbackError then
-									Starlight:Notification({
+									Eventide:Notification({
 										Title = Element.Values.Name .. " Callback Error",
 										Content = tostring(Response),
 										Icon = 129398364168201,
@@ -5740,7 +5741,7 @@ function Starlight:CreateWindow(WindowSettings)
 								v.Instances[1].Parent = Element.Instance.DropdownHolder
 							end
 
-							Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
+							Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
 								Element.Values
 						end
 					end)
@@ -5830,8 +5831,8 @@ function Starlight:CreateWindow(WindowSettings)
 						return module
 					end
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
 				end
 
 				function Groupbox:CreateDivider()
@@ -5848,9 +5849,9 @@ function Starlight:CreateWindow(WindowSettings)
 						Divider.Instance:Destroy()
 					end
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["Divider_" .. Divider.ID] =
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["Divider_" .. Divider.ID] =
 						Divider
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["Divider_" .. Divider.ID]
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements["Divider_" .. Divider.ID]
 				end
 
 				-- uhm so i crashed out here cus the textbox kept making it crash
@@ -5936,10 +5937,10 @@ function Starlight:CreateWindow(WindowSettings)
 
 								if not Success then
 									Element.Instance.Header.Text = "Callback Error"
-									warn(`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
+									warn(`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
 									print(Response)
 									if WindowSettings.NotifyOnCallbackError then
-										Starlight:Notification({
+										Eventide:Notification({
 											Title = Element.Values.Name .. " Callback Error",
 											Content = tostring(Response),
 											Icon = 129398364168201,
@@ -6054,11 +6055,11 @@ function Starlight:CreateWindow(WindowSettings)
 										if not Success then
 											Element.Instance.Header.Text = "Callback Error"
 											warn(
-												`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
+												`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`
 											)
 											print(Response)
 											if WindowSettings.NotifyOnCallbackError then
-												Starlight:Notification({
+												Eventide:Notification({
 													Title = Element.Values.Name .. " Callback Error",
 													Content = tostring(Response),
 													Icon = 129398364168201,
@@ -6286,7 +6287,7 @@ function Starlight:CreateWindow(WindowSettings)
 								not Element.Values.HideMax and `/{Element.Values.Range[2]}` or ""
 							) .. `{Element.Values.Suffix}`
 
-							Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
+							Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
 								Element.Values
 						end
 
@@ -6304,8 +6305,8 @@ function Starlight:CreateWindow(WindowSettings)
 						Element.Instance.Parent = Groupbox.ParentingItem
 					end)
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
 				end
 
 				function Groupbox:CreateInput(ElementSettings, Index)
@@ -6356,10 +6357,10 @@ function Starlight:CreateWindow(WindowSettings)
 
 								if not Success then
 									Element.Instance.Header.Text = "Callback Error"
-									warn(`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
+									warn(`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
 									print(Response)
 									if WindowSettings.NotifyOnCallbackError then
-										Starlight:Notification({
+										Eventide:Notification({
 											Title = Element.Values.Name .. " Callback Error",
 											Content = tostring(Response),
 											Icon = 129398364168201,
@@ -6384,13 +6385,13 @@ function Starlight:CreateWindow(WindowSettings)
 						Element.Instance.MouseEnter:Connect(function()
 							Tween(
 								Element.Instance.PART_Backdrop.UIStroke,
-								{ Color = Starlight.CurrentTheme.Foregrounds.DarkHover }
+								{ Color = Eventide.CurrentTheme.Foregrounds.DarkHover }
 							)
 						end)
 						Element.Instance.MouseLeave:Connect(function()
 							Tween(
 								Element.Instance.PART_Backdrop.UIStroke,
-								{ Color = Starlight.CurrentTheme.Foregrounds.Dark }
+								{ Color = Eventide.CurrentTheme.Foregrounds.Dark }
 							)
 						end)
 
@@ -6427,10 +6428,10 @@ function Starlight:CreateWindow(WindowSettings)
 
 								if not Success then
 									Element.Instance.Header.Text = "Callback Error"
-									warn(`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
+									warn(`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
 									print(Response)
 									if WindowSettings.NotifyOnCallbackError then
-										Starlight:Notification({
+										Eventide:Notification({
 											Title = Element.Values.Name .. " Callback Error",
 											Content = tostring(Response),
 											Icon = 129398364168201,
@@ -6547,10 +6548,10 @@ function Starlight:CreateWindow(WindowSettings)
 
 							if not Success then
 								Element.Instance.Header.Text = "Callback Error"
-								warn(`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
+								warn(`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index})`)
 								print(Response)
 								if WindowSettings.NotifyOnCallbackError then
-									Starlight:Notification({
+									Eventide:Notification({
 										Title = Element.Values.Name .. " Callback Error",
 										Content = tostring(Response),
 										Icon = 129398364168201,
@@ -6562,7 +6563,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 							tooltip.Text = Element.Values.Tooltip or ""
 
-							Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
+							Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
 								Element.Values
 						end
 
@@ -6590,8 +6591,8 @@ function Starlight:CreateWindow(WindowSettings)
 					end)
 					Element.Instance.Parent = Groupbox.ParentingItem
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
 				end
 
 				function Groupbox:CreateLabel(ElementSettings, Index)
@@ -6660,7 +6661,7 @@ function Starlight:CreateWindow(WindowSettings)
 
 							tooltip.Text = Element.Values.Tooltip or ""
 
-							Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
+							Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index].Values =
 								Element.Values
 						end
 
@@ -6777,11 +6778,11 @@ function Starlight:CreateWindow(WindowSettings)
 							task.delay(0.2, function()
 								NestedElement.Instance.Text = NestedElement.Values.CurrentValue == "No Bind"
 									and '<font color="rgb(' .. tostring(
-										math.floor(Starlight.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5)
+										math.floor(Eventide.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5)
 									) .. "," .. tostring(
-									math.floor(Starlight.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5)
+									math.floor(Eventide.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5)
 								) .. "," .. tostring(
-									math.floor(Starlight.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5)
+									math.floor(Eventide.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5)
 								) .. ')">No Bind</font>'
 									or NestedElement.Values.CurrentValue
 							end)
@@ -6794,13 +6795,13 @@ function Starlight:CreateWindow(WindowSettings)
 							NestedElement.Instance.MouseEnter:Connect(function()
 								Tween(
 									NestedElement.Instance.UIStroke,
-									{ Color = Starlight.CurrentTheme.Foregrounds.DarkHover }
+									{ Color = Eventide.CurrentTheme.Foregrounds.DarkHover }
 								)
 							end)
 							NestedElement.Instance.MouseLeave:Connect(function()
 								Tween(
 									NestedElement.Instance.UIStroke,
-									{ Color = Starlight.CurrentTheme.Foregrounds.Dark }
+									{ Color = Eventide.CurrentTheme.Foregrounds.Dark }
 								)
 							end)
 
@@ -6811,15 +6812,15 @@ function Starlight:CreateWindow(WindowSettings)
 										NestedElement.Values.CurrentValue = "No Bind"
 										NestedElement.Instance.Text = '<font color="rgb('
 											.. tostring(
-												math.floor(Starlight.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5)
+												math.floor(Eventide.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5)
 											)
 											.. ","
 											.. tostring(
-												math.floor(Starlight.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5)
+												math.floor(Eventide.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5)
 											)
 											.. ","
 											.. tostring(
-												math.floor(Starlight.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5)
+												math.floor(Eventide.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5)
 											)
 											.. ')">No Bind</font>'
 									end
@@ -6839,17 +6840,17 @@ function Starlight:CreateWindow(WindowSettings)
 													NestedElement.Values.OnChangedCallback(
 														NestedElement.Values.CurrentValue
 													)
-													Starlight.WindowKeybind = tostring(NewKeyNoEnum)
+													Eventide.WindowKeybind = tostring(NewKeyNoEnum)
 												end)
 
 												if not Success then
 													Parent.Instance.Header.Text = "Callback Error"
 													warn(
-														`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+														`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 													)
 													print(Response)
 													if WindowSettings.NotifyOnCallbackError then
-														Starlight:Notification({
+														Eventide:Notification({
 															Title = Element.Values.Name .. " Callback Error",
 															Content = tostring(Response),
 															Icon = 129398364168201,
@@ -6860,7 +6861,7 @@ function Starlight:CreateWindow(WindowSettings)
 												end
 												NestedElement.Instance:ReleaseFocus()
 											else
-												Starlight.WindowKeybind = nil
+												Eventide.WindowKeybind = nil
 											end
 										elseif not (input.UserInputType == Enum.UserInputType.Keyboard) then
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -6876,11 +6877,11 @@ function Starlight:CreateWindow(WindowSettings)
 												if not Success then
 													Parent.Instance.Header.Text = "Callback Error"
 													warn(
-														`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+														`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 													)
 													print(Response)
 													if WindowSettings.NotifyOnCallbackError then
-														Starlight:Notification({
+														Eventide:Notification({
 															Title = Element.Values.Name .. " Callback Error",
 															Content = tostring(Response),
 															Icon = 129398364168201,
@@ -6902,11 +6903,11 @@ function Starlight:CreateWindow(WindowSettings)
 												if not Success then
 													Parent.Instance.Header.Text = "Callback Error"
 													warn(
-														`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+														`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 													)
 													print(Response)
 													if WindowSettings.NotifyOnCallbackError then
-														Starlight:Notification({
+														Eventide:Notification({
 															Title = Element.Values.Name .. " Callback Error",
 															Content = tostring(Response),
 															Icon = 129398364168201,
@@ -6920,7 +6921,7 @@ function Starlight:CreateWindow(WindowSettings)
 										else
 											if
 												input.KeyCode ~= Enum.KeyCode.Unknown
-												and input.KeyCode ~= Enum.KeyCode[Starlight.WindowKeybind]
+												and input.KeyCode ~= Enum.KeyCode[Eventide.WindowKeybind]
 											then
 												local SplitMessage = string.split(tostring(input.KeyCode), ".")
 												local NewKeyNoEnum = SplitMessage[3]
@@ -6935,11 +6936,11 @@ function Starlight:CreateWindow(WindowSettings)
 												if not Success then
 													Parent.Instance.Header.Text = "Callback Error"
 													warn(
-														`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+														`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 													)
 													print(Response)
 													if WindowSettings.NotifyOnCallbackError then
-														Starlight:Notification({
+														Eventide:Notification({
 															Title = Element.Values.Name .. " Callback Error",
 															Content = tostring(Response),
 															Icon = 129398364168201,
@@ -6949,20 +6950,20 @@ function Starlight:CreateWindow(WindowSettings)
 													Parent.Instance.Header.Text = ElementSettings.Name
 												end
 												NestedElement.Instance:ReleaseFocus()
-											elseif input.KeyCode == Enum.KeyCode[Starlight.WindowKeybind] then
+											elseif input.KeyCode == Enum.KeyCode[Eventide.WindowKeybind] then
 												NestedElement.Instance.Text = NestedElement.Values.CurrentValue
 													== "No Bind"
 													and '<font color="rgb(' .. tostring(
 														math.floor(
-															Starlight.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5
+															Eventide.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5
 														)
 													) .. "," .. tostring(
 													math.floor(
-														Starlight.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5
+														Eventide.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5
 													)
 												) .. "," .. tostring(
 													math.floor(
-														Starlight.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5
+														Eventide.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5
 													)
 												) .. ')">No Bind</font>'
 													or NestedElement.Values.CurrentValue
@@ -7004,11 +7005,11 @@ function Starlight:CreateWindow(WindowSettings)
 											if not success then
 												Parent.Instance.Header.Text = "Callback Error"
 												warn(
-													`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+													`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 												)
 												print(response)
 												if WindowSettings.NotifyOnCallbackError then
-													Starlight:Notification({
+													Eventide:Notification({
 														Title = Element.Values.Name .. " Callback Error",
 														Content = tostring(response),
 														Icon = 129398364168201,
@@ -7035,11 +7036,11 @@ function Starlight:CreateWindow(WindowSettings)
 											if not success then
 												Parent.Instance.Header.Text = "Callback Error"
 												warn(
-													`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+													`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 												)
 												print(response)
 												if WindowSettings.NotifyOnCallbackError then
-													Starlight:Notification({
+													Eventide:Notification({
 														Title = Element.Values.Name .. " Callback Error",
 														Content = tostring(response),
 														Icon = 129398364168201,
@@ -7070,11 +7071,11 @@ function Starlight:CreateWindow(WindowSettings)
 													if not success2 then
 														Parent.Instance.Header.Text = "Callback Error"
 														warn(
-															`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+															`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 														)
 														print(response2)
 														if WindowSettings.NotifyOnCallbackError then
-															Starlight:Notification({
+															Eventide:Notification({
 																Title = Element.Values.Name .. " Callback Error",
 																Content = tostring(response2),
 																Icon = 129398364168201,
@@ -7093,18 +7094,18 @@ function Starlight:CreateWindow(WindowSettings)
 							local Success, Response = pcall(function()
 								NestedElement.Values.OnChangedCallback(NestedElement.Values.CurrentValue)
 								if NestedElement.Values.WindowSetting then
-									Starlight.WindowKeybind = tostring(NestedElement.Values.CurrentValue)
+									Eventide.WindowKeybind = tostring(NestedElement.Values.CurrentValue)
 								end
 							end)
 
 							if not Success then
 								Parent.Instance.Header.Text = "Callback Error"
 								warn(
-									`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+									`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 								)
 								print(Response)
 								if WindowSettings.NotifyOnCallbackError then
-									Starlight:Notification({
+									Eventide:Notification({
 										Title = Element.Values.Name .. " Callback Error",
 										Content = tostring(Response),
 										Icon = 129398364168201,
@@ -7147,29 +7148,29 @@ function Starlight:CreateWindow(WindowSettings)
 
 								NestedElement.Instance.Text = NestedElement.Values.CurrentValue == "No Bind"
 									and '<font color="rgb(' .. tostring(
-										math.floor(Starlight.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5)
+										math.floor(Eventide.CurrentTheme.Foregrounds.Medium.R * 255 + 0.5)
 									) .. "," .. tostring(
-									math.floor(Starlight.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5)
+									math.floor(Eventide.CurrentTheme.Foregrounds.Medium.G * 255 + 0.5)
 								) .. "," .. tostring(
-									math.floor(Starlight.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5)
+									math.floor(Eventide.CurrentTheme.Foregrounds.Medium.B * 255 + 0.5)
 								) .. ')">No Bind</font>'
 									or NestedElement.Values.CurrentValue
 
 								local Success, Response = pcall(function()
 									NestedElement.Values.OnChangedCallback(NestedElement.Values.CurrentValue)
 									if NestedElement.Values.WindowSetting then
-										Starlight.WindowKeybind = tostring(NestedElement.Values.CurrentValue)
+										Eventide.WindowKeybind = tostring(NestedElement.Values.CurrentValue)
 									end
 								end)
 
 								if not Success then
 									Parent.Instance.Header.Text = "Callback Error"
 									warn(
-										`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+										`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 									)
 									print(Response)
 									if WindowSettings.NotifyOnCallbackError then
-										Starlight:Notification({
+										Eventide:Notification({
 											Title = Element.Values.Name .. " Callback Error",
 											Content = tostring(Response),
 											Icon = 129398364168201,
@@ -7179,14 +7180,14 @@ function Starlight:CreateWindow(WindowSettings)
 									Parent.Instance.Header.Text = ElementSettings.Name
 								end
 
-								Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex].Values =
+								Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex].Values =
 									NestedElement.Values
 							end
 						end)
 
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex] =
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex] =
 							NestedElement
-						return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex]
+						return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex]
 					end
 
 					function Element:AddColorPicker(NestedSettings, NestedIndex, Parent, ParentIndex)
@@ -7219,7 +7220,7 @@ function Starlight:CreateWindow(WindowSettings)
 							Parent.Instance.Header.Size = UDim2.fromOffset(Parent.Instance.Header.Size.X.Offset - 26, 20)
 
 							NestedElement.Instances[2] = Resources.Elements.ColorPicker:Clone()
-							NestedElement.Instances[2].Parent = StarlightUI.PopupOverlay
+							NestedElement.Instances[2].Parent = EventideUI.PopupOverlay
 
 							NestedElement.Instances[1].Name = "COLORPICKER_" .. NestedIndex
 							NestedElement.Instances[2].Name = "COLORPICKER_" .. NestedIndex
@@ -7343,7 +7344,7 @@ function Starlight:CreateWindow(WindowSettings)
 											OtherTabButton,
 											{
 												BackgroundTransparency = 1,
-												TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium,
+												TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium,
 											}
 										)
 										OtherTabButton.Accent.Enabled = false
@@ -7387,11 +7388,11 @@ function Starlight:CreateWindow(WindowSettings)
 								if not Success then
 									Parent.Instance.Header.Text = "Callback Error"
 									warn(
-										`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+										`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 									)
 									print(Response)
 									if WindowSettings.NotifyOnCallbackError then
-										Starlight:Notification({
+										Eventide:Notification({
 											Title = Element.Values.Name .. " Callback Error",
 											Content = tostring(Response),
 											Icon = 129398364168201,
@@ -8116,14 +8117,14 @@ function Starlight:CreateWindow(WindowSettings)
 								updateInstances(nil, ignoreCallback)
 								NestedElement:__updateHsv()
 
-								Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex].Values =
+								Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex].Values =
 									NestedElement.Values
 							end
 						end)
 
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex] =
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex] =
 							NestedElement
-						return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex]
+						return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex]
 					end
 
 					function Element:AddDropdown(NestedSettings, NestedIndex, Parent, ParentIndex)
@@ -8176,7 +8177,7 @@ function Starlight:CreateWindow(WindowSettings)
 							end
 
 							NestedElement.Instances[2] = Resources.Elements.DropdownPopup:Clone()
-							NestedElement.Instances[2].Parent = StarlightUI.PopupOverlay
+							NestedElement.Instances[2].Parent = EventideUI.PopupOverlay
 
 							NestedElement.Instances[1].Name = "DROPDOWN_" .. NestedIndex
 							NestedElement.Instances[2].Name = "DROPDOWN_" .. NestedIndex
@@ -8302,22 +8303,22 @@ function Starlight:CreateWindow(WindowSettings)
 							local function hover()
 								Tween(
 									NestedElement.Instances[1].UIStroke,
-									{ Color = Starlight.CurrentTheme.Foregrounds.DarkHover }
+									{ Color = Eventide.CurrentTheme.Foregrounds.DarkHover }
 								)
 								Tween(
 									NestedElement.Instances[2].UIStroke,
-									{ Color = Starlight.CurrentTheme.Foregrounds.DarkHover }
+									{ Color = Eventide.CurrentTheme.Foregrounds.DarkHover }
 								)
 								hover = true
 							end
 							local function leave()
 								Tween(
 									NestedElement.Instances[1].UIStroke,
-									{ Color = Starlight.CurrentTheme.Foregrounds.Dark }
+									{ Color = Eventide.CurrentTheme.Foregrounds.Dark }
 								)
 								Tween(
 									NestedElement.Instances[2].UIStroke,
-									{ Color = Starlight.CurrentTheme.Foregrounds.Dark }
+									{ Color = Eventide.CurrentTheme.Foregrounds.Dark }
 								)
 								hover = false
 							end
@@ -8372,7 +8373,7 @@ function Starlight:CreateWindow(WindowSettings)
 							local function Activate(option)
 								pcall(function()
 									Tween(option, { BackgroundTransparency = 0.5 })
-									Tween(option.header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Light })
+									Tween(option.header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Light })
 									Tween(
 										option.UIPadding,
 										{ PaddingLeft = UDim.new(0, 12) },
@@ -8392,7 +8393,7 @@ function Starlight:CreateWindow(WindowSettings)
 							local function Deactivate(option)
 								pcall(function()
 									Tween(option, { BackgroundTransparency = 1 })
-									Tween(option.header, { TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium })
+									Tween(option.header, { TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium })
 									Tween(
 										option.UIPadding,
 										{ PaddingLeft = UDim.new(0, 8) },
@@ -8431,11 +8432,11 @@ function Starlight:CreateWindow(WindowSettings)
 									if not Success then
 										Parent.Instance.Header.Text = "Callback Error"
 										warn(
-											`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+											`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 										)
 										print(Response)
 										if WindowSettings.NotifyOnCallbackError then
-											Starlight:Notification({
+											Eventide:Notification({
 												Title = Element.Values.Name .. " Callback Error",
 												Content = tostring(Response),
 												Icon = 129398364168201,
@@ -8463,11 +8464,11 @@ function Starlight:CreateWindow(WindowSettings)
 									if not Success then
 										Parent.Instance.Header.Text = "Callback Error"
 										warn(
-											`Starlight Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
+											`Eventide Interface Suite - Callback Error | {Element.Values.Name} ({Index} {NestedIndex})`
 										)
 										print(Response)
 										if WindowSettings.NotifyOnCallbackError then
-											Starlight:Notification({
+											Eventide:Notification({
 												Title = Element.Values.Name .. " Callback Error",
 												Content = tostring(Response),
 												Icon = 129398364168201,
@@ -8530,7 +8531,7 @@ function Starlight:CreateWindow(WindowSettings)
 											Tween(optioninstance, { BackgroundTransparency = 0.8 })
 											Tween(
 												optioninstance.header,
-												{ TextColor3 = Starlight.CurrentTheme.Foregrounds.Light }
+												{ TextColor3 = Eventide.CurrentTheme.Foregrounds.Light }
 											)
 										end
 									end)
@@ -8539,7 +8540,7 @@ function Starlight:CreateWindow(WindowSettings)
 											Tween(optioninstance, { BackgroundTransparency = 1 })
 											Tween(
 												optioninstance.header,
-												{ TextColor3 = Starlight.CurrentTheme.Foregrounds.Medium }
+												{ TextColor3 = Eventide.CurrentTheme.Foregrounds.Medium }
 											)
 										end
 									end)
@@ -8697,20 +8698,20 @@ function Starlight:CreateWindow(WindowSettings)
 										or "--"
 								end)
 
-								Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex].Values =
+								Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex].Values =
 									NestedElement.Values
 							end
 						end)
 
-						Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex] =
+						Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[ParentIndex].NestedElements[NestedIndex] =
 							NestedElement
 						return NestedElement
 					end
 
 					--// ENDSUBSECTION
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
 				end
 
 				function Groupbox:CreateParagraph(ElementSettings, Index)
@@ -8780,7 +8781,7 @@ function Starlight:CreateWindow(WindowSettings)
 								or ""
 							Element.Instance.Content.Text = Element.Values.Content
 
-							Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[NewIndex].Values =
+							Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[NewIndex].Values =
 								ElementSettings
 						end
 
@@ -8807,15 +8808,15 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 					end)
 
-					Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
-					return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
+					Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index] = Element
+					return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex].Elements[Index]
 				end
 
 				--// ENDSUBSECTION
 
 				Groupbox.Instance.Parent = Tab.Instances.Page["Column_" .. GroupboxSettings.Column]
-				Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex] = Groupbox
-				return Starlight.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex]
+				Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex] = Groupbox
+				return Eventide.Window.TabSections[Name].Tabs[TabIndex].Groupboxes[GroupIndex]
 			end
 
 			--function Tab:CreateTabbox(TabboxSettings) -- coming soon
@@ -8828,11 +8829,11 @@ function Starlight:CreateWindow(WindowSettings)
 				end
 
 				local themesPath = WindowSettings.FileSettings.ThemesInRoot
-					and `{Starlight.FileSystem.Folder}/{root}/themes`
-					or `{Starlight.FileSystem.Folder}/{folderpath}/themes`
+					and `{Eventide.FileSystem.Folder}/{root}/themes`
+					or `{Eventide.FileSystem.Folder}/{folderpath}/themes`
 
 				if not isStudio and not isfolder(themesPath) then
-					Starlight.FileSystem:BuildFolderTree(WindowSettings.FileSettings)
+					Eventide.FileSystem:BuildFolderTree(WindowSettings.FileSettings)
 				end
 
 				local instance = Tab:CreateGroupbox({
@@ -8843,7 +8844,7 @@ function Starlight:CreateWindow(WindowSettings)
 				}, "__prebuiltThemeGroupbox")
 
 				local themesArray = {
-					"Starlight",
+					"Eventide",
 					"Hollywood Dark",
 					"Hollywood Light",
 					"Orca",
@@ -8865,7 +8866,7 @@ function Starlight:CreateWindow(WindowSettings)
 					"Catppuccin Frappe",
 					"Catppuccin Latte",
 				}
-				local customThemes = not isStudio and Starlight.FileSystem:RefreshConfigList(themesPath) or {}
+				local customThemes = not isStudio and Eventide.FileSystem:RefreshConfigList(themesPath) or {}
 				for _, v in pairs(customThemes) do
 					table.insert(themesArray, v)
 				end
@@ -8924,10 +8925,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.bg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Backgrounds.Dark,
+							CurrentValue = Eventide.CurrentTheme.Backgrounds.Dark,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Backgrounds.Dark = c
+								Eventide.CurrentTheme.Backgrounds.Dark = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -8935,7 +8936,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "dark")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Backgrounds.Dark }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Backgrounds.Dark }, nil, true)
 							end
 						end)
 					end
@@ -8943,10 +8944,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.bg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Backgrounds.Medium,
+							CurrentValue = Eventide.CurrentTheme.Backgrounds.Medium,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Backgrounds.Medium = c
+								Eventide.CurrentTheme.Backgrounds.Medium = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -8954,7 +8955,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "medium")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Backgrounds.Medium }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Backgrounds.Medium }, nil, true)
 							end
 						end)
 					end
@@ -8962,10 +8963,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.bg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Backgrounds.Light,
+							CurrentValue = Eventide.CurrentTheme.Backgrounds.Light,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Backgrounds.Light = c
+								Eventide.CurrentTheme.Backgrounds.Light = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -8973,7 +8974,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "light")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Backgrounds.Light }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Backgrounds.Light }, nil, true)
 							end
 						end)
 					end
@@ -8981,10 +8982,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.bg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Backgrounds.Groupbox,
+							CurrentValue = Eventide.CurrentTheme.Backgrounds.Groupbox,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Backgrounds.Groupbox = c
+								Eventide.CurrentTheme.Backgrounds.Groupbox = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -8992,7 +8993,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "gb")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Backgrounds.Groupbox }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Backgrounds.Groupbox }, nil, true)
 							end
 						end)
 					end
@@ -9000,10 +9001,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.bg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Backgrounds.Highlight,
+							CurrentValue = Eventide.CurrentTheme.Backgrounds.Highlight,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Backgrounds.Highlight = c
+								Eventide.CurrentTheme.Backgrounds.Highlight = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9011,7 +9012,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "popup")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Backgrounds.Highlight }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Backgrounds.Highlight }, nil, true)
 							end
 						end)
 					end
@@ -9023,10 +9024,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.fg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Foregrounds.Dark,
+							CurrentValue = Eventide.CurrentTheme.Foregrounds.Dark,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Foregrounds.Dark = c
+								Eventide.CurrentTheme.Foregrounds.Dark = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9034,7 +9035,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "dark")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Foregrounds.Dark }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Foregrounds.Dark }, nil, true)
 							end
 						end)
 					end
@@ -9042,10 +9043,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.fg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Foregrounds.Medium,
+							CurrentValue = Eventide.CurrentTheme.Foregrounds.Medium,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Foregrounds.Medium = c
+								Eventide.CurrentTheme.Foregrounds.Medium = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9053,7 +9054,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "medium")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Foregrounds.Medium }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Foregrounds.Medium }, nil, true)
 							end
 						end)
 					end
@@ -9061,10 +9062,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.fg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Foregrounds.Light,
+							CurrentValue = Eventide.CurrentTheme.Foregrounds.Light,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Foregrounds.Light = c
+								Eventide.CurrentTheme.Foregrounds.Light = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9072,7 +9073,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "light")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Foregrounds.Light }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Foregrounds.Light }, nil, true)
 							end
 						end)
 					end
@@ -9080,10 +9081,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.fg:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Foregrounds.Active,
+							CurrentValue = Eventide.CurrentTheme.Foregrounds.Active,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Foregrounds.Active = c
+								Eventide.CurrentTheme.Foregrounds.Active = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9091,7 +9092,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "active")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Foregrounds.Active }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Foregrounds.Active }, nil, true)
 							end
 						end)
 					end
@@ -9099,10 +9100,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.fga:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Foregrounds.DarkHover,
+							CurrentValue = Eventide.CurrentTheme.Foregrounds.DarkHover,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Foregrounds.DarkHover = c
+								Eventide.CurrentTheme.Foregrounds.DarkHover = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9110,7 +9111,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "dark")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Foregrounds.DarkHover }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Foregrounds.DarkHover }, nil, true)
 							end
 						end)
 					end
@@ -9118,10 +9119,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.fga:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Foregrounds.MediumHover,
+							CurrentValue = Eventide.CurrentTheme.Foregrounds.MediumHover,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Foregrounds.MediumHover = c
+								Eventide.CurrentTheme.Foregrounds.MediumHover = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9129,7 +9130,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "medium")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Foregrounds.MediumHover }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Foregrounds.MediumHover }, nil, true)
 							end
 						end)
 					end
@@ -9140,10 +9141,10 @@ function Starlight:CreateWindow(WindowSettings)
 					local debounce = false
 					local cp = colorpickers.divider:AddColorPicker({
 						IgnoreConfig = true,
-						CurrentValue = Starlight.CurrentTheme.Miscellaneous.Divider,
+						CurrentValue = Eventide.CurrentTheme.Miscellaneous.Divider,
 						Callback = function(c)
 							debounce = true
-							Starlight.CurrentTheme.Miscellaneous.Divider = c
+							Eventide.CurrentTheme.Miscellaneous.Divider = c
 							themeEvent:Fire()
 							task.wait(6 / 60)
 							debounce = false
@@ -9151,7 +9152,7 @@ function Starlight:CreateWindow(WindowSettings)
 					}, "dark")
 					themeEvent.Event:Connect(function()
 						if not debounce then
-							cp:Set({ CurrentValue = Starlight.CurrentTheme.Miscellaneous.Divider }, nil, true)
+							cp:Set({ CurrentValue = Eventide.CurrentTheme.Miscellaneous.Divider }, nil, true)
 						end
 					end)
 				end
@@ -9162,10 +9163,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.shadows:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Miscellaneous.Shadow,
+							CurrentValue = Eventide.CurrentTheme.Miscellaneous.Shadow,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Miscellaneous.Shadow = c
+								Eventide.CurrentTheme.Miscellaneous.Shadow = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9173,7 +9174,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "dark")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Miscellaneous.Shadow }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Miscellaneous.Shadow }, nil, true)
 							end
 						end)
 					end
@@ -9181,10 +9182,10 @@ function Starlight:CreateWindow(WindowSettings)
 						local debounce = false
 						local cp = colorpickers.shadows:AddColorPicker({
 							IgnoreConfig = true,
-							CurrentValue = Starlight.CurrentTheme.Miscellaneous.LighterShadow,
+							CurrentValue = Eventide.CurrentTheme.Miscellaneous.LighterShadow,
 							Callback = function(c)
 								debounce = true
-								Starlight.CurrentTheme.Miscellaneous.LighterShadow = c
+								Eventide.CurrentTheme.Miscellaneous.LighterShadow = c
 								themeEvent:Fire()
 								task.wait(6 / 60)
 								debounce = false
@@ -9192,7 +9193,7 @@ function Starlight:CreateWindow(WindowSettings)
 						}, "light")
 						themeEvent.Event:Connect(function()
 							if not debounce then
-								cp:Set({ CurrentValue = Starlight.CurrentTheme.Miscellaneous.LighterShadow }, nil, true)
+								cp:Set({ CurrentValue = Eventide.CurrentTheme.Miscellaneous.LighterShadow }, nil, true)
 							end
 						end)
 					end
@@ -9206,11 +9207,11 @@ function Starlight:CreateWindow(WindowSettings)
 							local debounce = false
 							local cp = colorpickers.accent:AddColorPicker({
 								IgnoreConfig = true,
-								CurrentValue = Starlight.CurrentTheme.Accents.Main.Keypoints[1].Value,
+								CurrentValue = Eventide.CurrentTheme.Accents.Main.Keypoints[1].Value,
 								Callback = function(c)
 									debounce = true
-									local keypoints = Starlight.CurrentTheme.Accents.Main.Keypoints
-									Starlight.CurrentTheme.Accents.Main = ColorSequence.new({
+									local keypoints = Eventide.CurrentTheme.Accents.Main.Keypoints
+									Eventide.CurrentTheme.Accents.Main = ColorSequence.new({
 										ColorSequenceKeypoint.new(keypoints[1].Time, c),
 										keypoints[2],
 										keypoints[3],
@@ -9223,7 +9224,7 @@ function Starlight:CreateWindow(WindowSettings)
 							themeEvent.Event:Connect(function()
 								if not debounce then
 									cp:Set(
-										{ CurrentValue = Starlight.CurrentTheme.Accents.Main.Keypoints[1].Value },
+										{ CurrentValue = Eventide.CurrentTheme.Accents.Main.Keypoints[1].Value },
 										nil,
 										true
 									)
@@ -9234,11 +9235,11 @@ function Starlight:CreateWindow(WindowSettings)
 							local debounce = false
 							local cp = colorpickers.accent:AddColorPicker({
 								IgnoreConfig = true,
-								CurrentValue = Starlight.CurrentTheme.Accents.Main.Keypoints[2].Value,
+								CurrentValue = Eventide.CurrentTheme.Accents.Main.Keypoints[2].Value,
 								Callback = function(c)
 									debounce = true
-									local keypoints = Starlight.CurrentTheme.Accents.Main.Keypoints
-									Starlight.CurrentTheme.Accents.Main = ColorSequence.new({
+									local keypoints = Eventide.CurrentTheme.Accents.Main.Keypoints
+									Eventide.CurrentTheme.Accents.Main = ColorSequence.new({
 										keypoints[1],
 										ColorSequenceKeypoint.new(keypoints[2].Time, c),
 										keypoints[3],
@@ -9251,7 +9252,7 @@ function Starlight:CreateWindow(WindowSettings)
 							themeEvent.Event:Connect(function()
 								if not debounce then
 									cp:Set(
-										{ CurrentValue = Starlight.CurrentTheme.Accents.Main.Keypoints[2].Value },
+										{ CurrentValue = Eventide.CurrentTheme.Accents.Main.Keypoints[2].Value },
 										nil,
 										true
 									)
@@ -9262,11 +9263,11 @@ function Starlight:CreateWindow(WindowSettings)
 							local debounce = false
 							local cp = colorpickers.accent:AddColorPicker({
 								IgnoreConfig = true,
-								CurrentValue = Starlight.CurrentTheme.Accents.Main.Keypoints[3].Value,
+								CurrentValue = Eventide.CurrentTheme.Accents.Main.Keypoints[3].Value,
 								Callback = function(c)
 									debounce = true
-									local keypoints = Starlight.CurrentTheme.Accents.Main.Keypoints
-									Starlight.CurrentTheme.Accents.Main = ColorSequence.new({
+									local keypoints = Eventide.CurrentTheme.Accents.Main.Keypoints
+									Eventide.CurrentTheme.Accents.Main = ColorSequence.new({
 										keypoints[1],
 										keypoints[2],
 										ColorSequenceKeypoint.new(keypoints[3].Time, c),
@@ -9279,7 +9280,7 @@ function Starlight:CreateWindow(WindowSettings)
 							themeEvent.Event:Connect(function()
 								if not debounce then
 									cp:Set(
-										{ CurrentValue = Starlight.CurrentTheme.Accents.Main.Keypoints[3].Value },
+										{ CurrentValue = Eventide.CurrentTheme.Accents.Main.Keypoints[3].Value },
 										nil,
 										true
 									)
@@ -9293,11 +9294,11 @@ function Starlight:CreateWindow(WindowSettings)
 							local debounce = false
 							local cp = colorpickers.accent2:AddColorPicker({
 								IgnoreConfig = true,
-								CurrentValue = Starlight.CurrentTheme.Accents.Brighter.Keypoints[1].Value,
+								CurrentValue = Eventide.CurrentTheme.Accents.Brighter.Keypoints[1].Value,
 								Callback = function(c)
 									debounce = true
-									local keypoints = Starlight.CurrentTheme.Accents.Brighter.Keypoints
-									Starlight.CurrentTheme.Accents.Brighter = ColorSequence.new({
+									local keypoints = Eventide.CurrentTheme.Accents.Brighter.Keypoints
+									Eventide.CurrentTheme.Accents.Brighter = ColorSequence.new({
 										ColorSequenceKeypoint.new(keypoints[1].Time, c),
 										keypoints[2],
 										keypoints[3],
@@ -9310,7 +9311,7 @@ function Starlight:CreateWindow(WindowSettings)
 							themeEvent.Event:Connect(function()
 								if not debounce then
 									cp:Set(
-										{ CurrentValue = Starlight.CurrentTheme.Accents.Brighter.Keypoints[1].Value },
+										{ CurrentValue = Eventide.CurrentTheme.Accents.Brighter.Keypoints[1].Value },
 										nil,
 										true
 									)
@@ -9321,11 +9322,11 @@ function Starlight:CreateWindow(WindowSettings)
 							local debounce = false
 							local cp = colorpickers.accent2:AddColorPicker({
 								IgnoreConfig = true,
-								CurrentValue = Starlight.CurrentTheme.Accents.Brighter.Keypoints[2].Value,
+								CurrentValue = Eventide.CurrentTheme.Accents.Brighter.Keypoints[2].Value,
 								Callback = function(c)
 									debounce = true
-									local keypoints = Starlight.CurrentTheme.Accents.Brighter.Keypoints
-									Starlight.CurrentTheme.Accents.Brighter = ColorSequence.new({
+									local keypoints = Eventide.CurrentTheme.Accents.Brighter.Keypoints
+									Eventide.CurrentTheme.Accents.Brighter = ColorSequence.new({
 										keypoints[1],
 										ColorSequenceKeypoint.new(keypoints[2].Time, c),
 										keypoints[3],
@@ -9338,7 +9339,7 @@ function Starlight:CreateWindow(WindowSettings)
 							themeEvent.Event:Connect(function()
 								if not debounce then
 									cp:Set(
-										{ CurrentValue = Starlight.CurrentTheme.Accents.Brighter.Keypoints[2].Value },
+										{ CurrentValue = Eventide.CurrentTheme.Accents.Brighter.Keypoints[2].Value },
 										nil,
 										true
 									)
@@ -9349,11 +9350,11 @@ function Starlight:CreateWindow(WindowSettings)
 							local debounce = false
 							local cp = colorpickers.accent2:AddColorPicker({
 								IgnoreConfig = true,
-								CurrentValue = Starlight.CurrentTheme.Accents.Brighter.Keypoints[3].Value,
+								CurrentValue = Eventide.CurrentTheme.Accents.Brighter.Keypoints[3].Value,
 								Callback = function(c)
 									debounce = true
-									local keypoints = Starlight.CurrentTheme.Accents.Brighter.Keypoints
-									Starlight.CurrentTheme.Accents.Brighter = ColorSequence.new({
+									local keypoints = Eventide.CurrentTheme.Accents.Brighter.Keypoints
+									Eventide.CurrentTheme.Accents.Brighter = ColorSequence.new({
 										keypoints[1],
 										keypoints[2],
 										ColorSequenceKeypoint.new(keypoints[3].Time, c),
@@ -9366,7 +9367,7 @@ function Starlight:CreateWindow(WindowSettings)
 							themeEvent.Event:Connect(function()
 								if not debounce then
 									cp:Set(
-										{ CurrentValue = Starlight.CurrentTheme.Accents.Brighter.Keypoints[3].Value },
+										{ CurrentValue = Eventide.CurrentTheme.Accents.Brighter.Keypoints[3].Value },
 										nil,
 										true
 									)
@@ -9390,7 +9391,7 @@ function Starlight:CreateWindow(WindowSettings)
 					CenteredContent = ButtonsCentered,
 					Callback = function()
 						if not newName.CurrentValue or String.IsEmptyOrNull(newName.CurrentValue) then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Theme Error",
 								Icon = 129398364168201,
 								Content = "Theme name cannot be empty.",
@@ -9401,10 +9402,10 @@ function Starlight:CreateWindow(WindowSettings)
 						newName.CurrentValue = string.gsub(newName.CurrentValue, "\\", " ")
 
 						if
-							isfile(`{themesPath}/{newName.CurrentValue}{Starlight.FileSystem.FileExtension}`)
+							isfile(`{themesPath}/{newName.CurrentValue}{Eventide.FileSystem.FileExtension}`)
 							or themesArray[newName.CurrentValue]
 						then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Theme Exists",
 								Icon = 129398364168201,
 								Content = "Theme with the provided name exists already. Overwrite it with overwrite theme below.",
@@ -9417,9 +9418,9 @@ function Starlight:CreateWindow(WindowSettings)
 								return "File System unavailable."
 							end
 
-							local fullPath = `{themesPath}/{newName.CurrentValue}{Starlight.FileSystem.FileExtension}`
+							local fullPath = `{themesPath}/{newName.CurrentValue}{Eventide.FileSystem.FileExtension}`
 
-							local success, encoded = ThemeMethods.encodeTheme(Starlight.CurrentTheme)
+							local success, encoded = ThemeMethods.encodeTheme(Eventide.CurrentTheme)
 							if not success then
 								return false, "Unable to encode into JSON data"
 							end
@@ -9427,7 +9428,7 @@ function Starlight:CreateWindow(WindowSettings)
 							writefile(fullPath, encoded)
 						end)
 						if not success then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Theme Error",
 								Icon = 6031071057,
 								Content = "Unable to save Theme, return error: " .. returned,
@@ -9436,7 +9437,7 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 
 						themesArray = {
-							"Starlight",
+							"Eventide",
 							"Hollywood Dark",
 							"Hollywood Light",
 							"Orca",
@@ -9454,14 +9455,14 @@ function Starlight:CreateWindow(WindowSettings)
 							"Tokyo Night",
 							"Hollywood Fluent",
 						}
-						local customThemes = not isStudio and Starlight.FileSystem:RefreshConfigList(themesPath) or {}
+						local customThemes = not isStudio and Eventide.FileSystem:RefreshConfigList(themesPath) or {}
 						for _, v in pairs(customThemes) do
 							table.insert(themesArray, v)
 						end
 						instance.Elements.themedropdownlabel.NestedElements.themedropdown:Set({
 							Options = themesArray,
 						})
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Theme Created",
 							Icon = 6026568227,
 							Content = string.format("Created Theme %q", newName.CurrentValue),
@@ -9476,7 +9477,7 @@ function Starlight:CreateWindow(WindowSettings)
 					}, "themedropdownlabel")
 					:AddDropdown({
 						Options = themesArray,
-						CurrentOption = "Starlight",
+						CurrentOption = "Eventide",
 						Required = true,
 						Callback = function(newTheme)
 							newThemeToApply = newTheme[1]
@@ -9484,7 +9485,7 @@ function Starlight:CreateWindow(WindowSettings)
 					}, "themedropdown")
 				themeEvent.Event:Connect(function()
 					for key, theme in pairs(Themes) do
-						if theme == Starlight.CurrentTheme then
+						if theme == Eventide.CurrentTheme then
 							--themeDropdown:Set({ CurrentOption = tostring(key) })
 						end
 					end
@@ -9497,11 +9498,11 @@ function Starlight:CreateWindow(WindowSettings)
 					Style = 1,
 					Callback = function()
 						if Themes[newThemeToApply] ~= nil then
-							Starlight:SetTheme(Themes[newThemeToApply])
+							Eventide:SetTheme(Themes[newThemeToApply])
 						else
-							Starlight:SetTheme(
+							Eventide:SetTheme(
 								ThemeMethods.decodeTheme(
-									readfile(`{themesPath}/{newThemeToApply}{Starlight.FileSystem.FileExtension}`)
+									readfile(`{themesPath}/{newThemeToApply}{Eventide.FileSystem.FileExtension}`)
 								)
 							)
 						end
@@ -9514,7 +9515,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Icon = 6031225810,
 					Callback = function()
 						if newThemeToApply == nil then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Null Selection",
 								Icon = 129398364168201,
 								Content = "Theme Must Be Selected!",
@@ -9522,7 +9523,7 @@ function Starlight:CreateWindow(WindowSettings)
 							return
 						end
 						if Themes[newThemeToApply] then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Preset Theme",
 								Icon = 129398364168201,
 								Content = "Only A Custom Theme Can Be Overwritten!",
@@ -9535,9 +9536,9 @@ function Starlight:CreateWindow(WindowSettings)
 								return "File System unavailable."
 							end
 
-							local fullPath = `{themesPath}/{newThemeToApply}{Starlight.FileSystem.FileExtension}`
+							local fullPath = `{themesPath}/{newThemeToApply}{Eventide.FileSystem.FileExtension}`
 
-							local success, encoded = pcall(HttpService.JSONEncode, HttpService, Starlight.CurrentTheme)
+							local success, encoded = pcall(HttpService.JSONEncode, HttpService, Eventide.CurrentTheme)
 							if not success then
 								return false, "Unable to encode into JSON data"
 							end
@@ -9545,7 +9546,7 @@ function Starlight:CreateWindow(WindowSettings)
 							writefile(fullPath, encoded)
 						end)
 						if not success then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Theme Error",
 								Icon = 6031071057,
 								Content = "Unable to overwrite theme, return error: " .. returned,
@@ -9553,7 +9554,7 @@ function Starlight:CreateWindow(WindowSettings)
 							return
 						end
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Theme Updated",
 							Icon = 6026568227,
 							Content = string.format("Overwrote theme %q", newThemeToApply),
@@ -9565,7 +9566,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Name = "Current Autoload Theme:",
 					Content = not isStudio and (isfile(`{themesPath}/autoload.txt`) and readfile(
 						`{themesPath}/autoload.txt`
-						)) or "Starlight",
+						)) or "Eventide",
 				}, "autoloadlabel")
 
 				instance:CreateButton({
@@ -9574,7 +9575,7 @@ function Starlight:CreateWindow(WindowSettings)
 					CenterContent = ButtonsCentered,
 					Callback = function()
 						if newThemeToApply == nil then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Null Selection",
 								Icon = 129398364168201,
 								Content = "Theme Must Be Selected!",
@@ -9587,7 +9588,7 @@ function Starlight:CreateWindow(WindowSettings)
 						end)
 						loadlabel:Set({ Content = name })
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Theme Updated",
 							Icon = 6026568227,
 							Content = string.format(
@@ -9609,7 +9610,7 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 						loadlabel:Set({ Content = "None" })
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Autoload Cleared",
 							Icon = 6026568227,
 							Content = string.format("Disabled current autoload.", newThemeToApply),
@@ -9623,15 +9624,15 @@ function Starlight:CreateWindow(WindowSettings)
 					CenteredContent = ButtonsCentered,
 					Callback = function()
 						if newThemeToApply == nil then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Null Selection",
 								Icon = 129398364168201,
 								Content = "Theme Must Be Selected!",
 							})
 							return
 						end
-						if isfile(`{themesPath}/{newThemeToApply}{Starlight.FileSystem.FileExtension}`) then
-							delfile(`{themesPath}/{newThemeToApply}{Starlight.FileSystem.FileExtension}`)
+						if isfile(`{themesPath}/{newThemeToApply}{Eventide.FileSystem.FileExtension}`) then
+							delfile(`{themesPath}/{newThemeToApply}{Eventide.FileSystem.FileExtension}`)
 						end
 
 						if loadlabel.Values.Content == newThemeToApply then
@@ -9642,7 +9643,7 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 
 						themesArray = {
-							"Starlight",
+							"Eventide",
 							"Hollywood Dark",
 							"Hollywood Light",
 							"Orca",
@@ -9660,7 +9661,7 @@ function Starlight:CreateWindow(WindowSettings)
 							"Tokyo Night",
 							"Hollywood Fluent",
 						}
-						local customThemes = not isStudio and Starlight.FileSystem:RefreshConfigList(themesPath) or {}
+						local customThemes = not isStudio and Eventide.FileSystem:RefreshConfigList(themesPath) or {}
 						for _, v in pairs(customThemes) do
 							table.insert(themesArray, v)
 						end
@@ -9669,7 +9670,7 @@ function Starlight:CreateWindow(WindowSettings)
 							CurrentOption = "",
 						})
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Theme Deleted",
 							Icon = 6026568227,
 							Content = string.format("Deleted Configuration %q", newThemeToApply),
@@ -9727,7 +9728,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Tooltip = "Create a configuration to access any time with all your current settings.",
 					Callback = function()
 						if not inputPath.Values.CurrentValue or String.IsEmptyOrNull(inputPath.Values.CurrentValue) then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Configuration Error",
 								Icon = 129398364168201,
 								Content = "Config name cannot be empty.",
@@ -9739,10 +9740,10 @@ function Starlight:CreateWindow(WindowSettings)
 
 						if
 							isfile(
-								`{Starlight.FileSystem.Folder}/{folderpath}/configs/{inputPath.Values.CurrentValue}{Starlight.FileSystem.FileExtension}`
+								`{Eventide.FileSystem.Folder}/{folderpath}/configs/{inputPath.Values.CurrentValue}{Eventide.FileSystem.FileExtension}`
 							)
 						then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Configuration Exists",
 								Icon = 129398364168201,
 								Content = "Configuration with the provided name exists already. Overwrite it with update config below.",
@@ -9750,27 +9751,27 @@ function Starlight:CreateWindow(WindowSettings)
 							return
 						end
 
-						local success, returned = Starlight.FileSystem:SaveConfig(
+						local success, returned = Eventide.FileSystem:SaveConfig(
 							inputPath.Values.CurrentValue,
-							`{Starlight.FileSystem.Folder}/{folderpath}/configs/`
+							`{Eventide.FileSystem.Folder}/{folderpath}/configs/`
 						)
 						if not success then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Configuration Error",
 								Icon = 6031071057,
 								Content = "Unable to save config, return error: " .. returned,
 							})
 						end
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Configuration Created",
 							Icon = 6026568227,
 							Content = string.format("Created config %q", inputPath.Values.CurrentValue),
 						})
 
 						instance.Elements["__prebuiltConfigSelector_lbl"].NestedElements["__prebuiltConfigSelector_lbl"]:Set({
-							Options = Starlight.FileSystem:RefreshConfigList(
-								`{Starlight.FileSystem.Folder}/{folderpath}/configs`
+							Options = Eventide.FileSystem:RefreshConfigList(
+								`{Eventide.FileSystem.Folder}/{folderpath}/configs`
 							),
 						})
 					end,
@@ -9785,8 +9786,8 @@ function Starlight:CreateWindow(WindowSettings)
 						Tooltip = "Select a config for this section to work on.",
 					}, "__prebuiltConfigSelector_lbl")
 					:AddDropdown({
-						Options = Starlight.FileSystem:RefreshConfigList(
-							`{Starlight.FileSystem.Folder}/{folderpath}/configs`
+						Options = Eventide.FileSystem:RefreshConfigList(
+							`{Eventide.FileSystem.Folder}/{folderpath}/configs`
 						),
 						CurrentOption = nil,
 						MultipleOptions = false,
@@ -9802,7 +9803,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Tooltip = "Load the selected configuration and all its settings.",
 					Callback = function()
 						if selectedConfig == nil then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Null Selection",
 								Icon = 129398364168201,
 								Content = "Configuration Must Be Selected!",
@@ -9810,12 +9811,12 @@ function Starlight:CreateWindow(WindowSettings)
 							return
 						end
 
-						local success, returned = Starlight.FileSystem:LoadConfig(
+						local success, returned = Eventide.FileSystem:LoadConfig(
 							selectedConfig,
-							`{Starlight.FileSystem.Folder}/{folderpath}/configs/`
+							`{Eventide.FileSystem.Folder}/{folderpath}/configs/`
 						)
 						if not success then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Configuration Error",
 								Icon = 6031071057,
 								Content = "Unable to load config, return error: " .. returned,
@@ -9823,7 +9824,7 @@ function Starlight:CreateWindow(WindowSettings)
 							return
 						end
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Configuration Loaded",
 							Icon = 6026568227,
 							Content = string.format("Loaded config %q", selectedConfig),
@@ -9839,7 +9840,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Tooltip = "Overwrite and update the selected configuration and all its settings with your current ones.",
 					Callback = function()
 						if selectedConfig == nil then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Null Selection",
 								Icon = 129398364168201,
 								Content = "Configuration Must Be Selected!",
@@ -9847,12 +9848,12 @@ function Starlight:CreateWindow(WindowSettings)
 							return
 						end
 
-						local success, returned = Starlight.FileSystem:SaveConfig(
+						local success, returned = Eventide.FileSystem:SaveConfig(
 							selectedConfig,
-							`{Starlight.FileSystem.Folder}/{folderpath}/configs/`
+							`{Eventide.FileSystem.Folder}/{folderpath}/configs/`
 						)
 						if not success then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Configuration Error",
 								Icon = 6031071057,
 								Content = "Unable to overwrite config, return error: " .. returned,
@@ -9860,7 +9861,7 @@ function Starlight:CreateWindow(WindowSettings)
 							return
 						end
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Configuration Updated",
 							Icon = 6026568227,
 							Content = string.format("Overwrote config %q", selectedConfig),
@@ -9876,8 +9877,8 @@ function Starlight:CreateWindow(WindowSettings)
 					Tooltip = "Manually refresh the list of configurations incase of any errors.",
 					Callback = function()
 						instance.Elements["__prebuiltConfigSelector_lbl"].NestedElements["__prebuiltConfigSelector_lbl"]:Set({
-							Options = Starlight.FileSystem:RefreshConfigList(
-								`{Starlight.FileSystem.Folder}/{folderpath}/configs`
+							Options = Eventide.FileSystem:RefreshConfigList(
+								`{Eventide.FileSystem.Folder}/{folderpath}/configs`
 							),
 						})
 					end,
@@ -9886,8 +9887,8 @@ function Starlight:CreateWindow(WindowSettings)
 
 				local loadlabel = instance:CreateParagraph({
 					Name = "Current Autoload Config:",
-					Content = isfile(`{Starlight.FileSystem.Folder}/{folderpath}/configs/autoload.txt`) and readfile(
-						`{Starlight.FileSystem.Folder}/{folderpath}/configs/autoload.txt`
+					Content = isfile(`{Eventide.FileSystem.Folder}/{folderpath}/configs/autoload.txt`) and readfile(
+						`{Eventide.FileSystem.Folder}/{folderpath}/configs/autoload.txt`
 					) or "None",
 				}, "__prebuiltConfigAutoloadLabel")
 
@@ -9898,7 +9899,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Tooltip = "Set the selected configuration to load whenever you run the script automatically.",
 					Callback = function()
 						if selectedConfig == nil then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Null Selection",
 								Icon = 129398364168201,
 								Content = "Configuration Must Be Selected!",
@@ -9907,11 +9908,11 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 						local name = selectedConfig
 						pcall(function()
-							writefile(`{Starlight.FileSystem.Folder}/{folderpath}/configs/autoload.txt`, name)
+							writefile(`{Eventide.FileSystem.Folder}/{folderpath}/configs/autoload.txt`, name)
 						end)
 						loadlabel:Set({ Content = name })
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Configuration Updated",
 							Icon = 6026568227,
 							Content = string.format(
@@ -9938,12 +9939,12 @@ function Starlight:CreateWindow(WindowSettings)
 					CenterContent = ButtonsCentered,
 					Tooltip = "Removes the autoloading of the current autoload config.",
 					Callback = function()
-						if isfile(`{Starlight.FileSystem.Folder}/{folderpath}/configs/autoload.txt`) then
-							delfile(`{Starlight.FileSystem.Folder}/{folderpath}/configs/autoload.txt`)
+						if isfile(`{Eventide.FileSystem.Folder}/{folderpath}/configs/autoload.txt`) then
+							delfile(`{Eventide.FileSystem.Folder}/{folderpath}/configs/autoload.txt`)
 						end
 						loadlabel:Set({ Content = "None" })
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Autoload Cleared",
 							Icon = 6026568227,
 							Content = string.format("Disabled current autoload.", selectedConfig),
@@ -9959,7 +9960,7 @@ function Starlight:CreateWindow(WindowSettings)
 					Tooltip = "Deleting A Configuration is permanent and you have to redo it!",
 					Callback = function()
 						if selectedConfig == nil then
-							Starlight:Notification({
+							Eventide:Notification({
 								Title = "Null Selection",
 								Icon = 129398364168201,
 								Content = "Configuration Must Be Selected!",
@@ -9968,29 +9969,29 @@ function Starlight:CreateWindow(WindowSettings)
 						end
 						if
 							isfile(
-								`{Starlight.FileSystem.Folder}/{folderpath}/configs/{selectedConfig}{Starlight.FileSystem.FileExtension}`
+								`{Eventide.FileSystem.Folder}/{folderpath}/configs/{selectedConfig}{Eventide.FileSystem.FileExtension}`
 							)
 						then
 							delfile(
-								`{Starlight.FileSystem.Folder}/{folderpath}/configs/{selectedConfig}{Starlight.FileSystem.FileExtension}`
+								`{Eventide.FileSystem.Folder}/{folderpath}/configs/{selectedConfig}{Eventide.FileSystem.FileExtension}`
 							)
 						end
 
 						if loadlabel.Values.Content == selectedConfig then
-							if isfile(`{Starlight.FileSystem.Folder}/{folderpath}/configs/autoload.txt`) then
-								delfile(`{Starlight.FileSystem.Folder}/{folderpath}/configs/autoload.txt`)
+							if isfile(`{Eventide.FileSystem.Folder}/{folderpath}/configs/autoload.txt`) then
+								delfile(`{Eventide.FileSystem.Folder}/{folderpath}/configs/autoload.txt`)
 							end
 							loadlabel:Set({ Content = "None" })
 						end
 
 						instance.Elements["__prebuiltConfigSelector_lbl"].NestedElements["__prebuiltConfigSelector_lbl"]:Set({
-							Options = Starlight.FileSystem:RefreshConfigList(
-								`{Starlight.FileSystem.Folder}/{folderpath}/configs`
+							Options = Eventide.FileSystem:RefreshConfigList(
+								`{Eventide.FileSystem.Folder}/{folderpath}/configs`
 							),
 							CurrentOption = "",
 						})
 
-						Starlight:Notification({
+						Eventide:Notification({
 							Title = "Configuration Deleted",
 							Icon = 6026568227,
 							Content = string.format("Deleted Configuration %q", selectedConfig),
@@ -10005,14 +10006,14 @@ function Starlight:CreateWindow(WindowSettings)
 
 			--// ENDSUBSECTION
 
-			Tab.Instances.Button.Parent = Starlight.Window.TabSections[Name].Instance
-			Starlight.Window.TabSections[Name].Tabs[TabIndex] = Tab
-			return Starlight.Window.TabSections[Name].Tabs[TabIndex]
+			Tab.Instances.Button.Parent = Eventide.Window.TabSections[Name].Instance
+			Eventide.Window.TabSections[Name].Tabs[TabIndex] = Tab
+			return Eventide.Window.TabSections[Name].Tabs[TabIndex]
 		end
 
 		TabSection.Instance.Parent = navigation
-		Starlight.Window.TabSections[Name] = TabSection
-		return Starlight.Window.TabSections[Name]
+		Eventide.Window.TabSections[Name] = TabSection
+		return Eventide.Window.TabSections[Name]
 
 		--// ENDSUBSECTION
 	end
@@ -10024,13 +10025,13 @@ function Starlight:CreateWindow(WindowSettings)
 		mainWindow.Content.Topbar.NotificationCenterIcon["MouseEnter"]:Connect(function()
 			Tween(
 				mainWindow.Content.Topbar.NotificationCenterIcon,
-				{ ImageColor3 = Starlight.CurrentTheme.Foregrounds.DarkHover }
+				{ ImageColor3 = Eventide.CurrentTheme.Foregrounds.DarkHover }
 			)
 		end)
 		mainWindow.Content.Topbar.NotificationCenterIcon["MouseLeave"]:Connect(function()
 			Tween(
 				mainWindow.Content.Topbar.NotificationCenterIcon,
-				{ ImageColor3 = Starlight.CurrentTheme.Foregrounds.Dark }
+				{ ImageColor3 = Eventide.CurrentTheme.Foregrounds.Dark }
 			)
 		end)
 
@@ -10038,8 +10039,8 @@ function Starlight:CreateWindow(WindowSettings)
 		mainWindow.Content.Topbar.NotificationCenterIcon["MouseButton1Click"]:Connect(function()
 			if not notifdebounce then
 				notifdebounce = true
-				if Starlight.NotificationsOpen then
-					for i, newNotification in pairs(CollectionService:GetTagged("__starlight_ExpiredNotification")) do
+				if Eventide.NotificationsOpen then
+					for i, newNotification in pairs(CollectionService:GetTagged("__eventide_ExpiredNotification")) do
 						newNotification.Icon.Visible = false
 						TweenService:Create(
 							newNotification,
@@ -10113,7 +10114,7 @@ function Starlight:CreateWindow(WindowSettings)
 									1,
 									-90,
 									0,
-									-StarlightUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset
+									-EventideUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset
 								),
 							},
 							function()
@@ -10123,7 +10124,7 @@ function Starlight:CreateWindow(WindowSettings)
 						)
 					end
 				else
-					for i, newNotification in pairs(CollectionService:GetTagged("__starlight_ExpiredNotification")) do
+					for i, newNotification in pairs(CollectionService:GetTagged("__eventide_ExpiredNotification")) do
 						task.spawn(function()
 							newNotification.Icon.Visible = true
 
@@ -10131,7 +10132,7 @@ function Starlight:CreateWindow(WindowSettings)
 								1,
 								0,
 								0,
-								-StarlightUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset
+								-EventideUI.Notifications:FindFirstChild("UIListLayout").Padding.Offset
 							)
 
 							newNotification.Icon.Size = UDim2.new(0, 28, 0, 28)
@@ -10207,17 +10208,17 @@ function Starlight:CreateWindow(WindowSettings)
 						end)
 					end
 				end
-				Starlight.NotificationsOpen = not Starlight.NotificationsOpen
+				Eventide.NotificationsOpen = not Eventide.NotificationsOpen
 				task.wait(1)
 				notifdebounce = false
 			end
 		end)
 
 		mainWindow.Content.Topbar.Search["MouseEnter"]:Connect(function()
-			Tween(mainWindow.Content.Topbar.Search, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.DarkHover })
+			Tween(mainWindow.Content.Topbar.Search, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.DarkHover })
 		end)
 		mainWindow.Content.Topbar.Search["MouseLeave"]:Connect(function()
-			Tween(mainWindow.Content.Topbar.Search, { ImageColor3 = Starlight.CurrentTheme.Foregrounds.Dark })
+			Tween(mainWindow.Content.Topbar.Search, { ImageColor3 = Eventide.CurrentTheme.Foregrounds.Dark })
 		end)
 
 		for _, Button in pairs(mainWindow.Content.Topbar.Controls:GetChildren()) do
@@ -10235,7 +10236,7 @@ function Starlight:CreateWindow(WindowSettings)
 		end
 
 		mainWindow.Content.Topbar.Controls.Close["MouseButton1Click"]:Connect(function()
-			Starlight.Window:PromptDialog({
+			Eventide.Window:PromptDialog({
 				Name = "Are you sure?",
 				Content = "Are you sure you wish to exit the Interface?",
 				Type = 1,
@@ -10247,14 +10248,14 @@ function Starlight:CreateWindow(WindowSettings)
 					{
 						Name = "Yes",
 						Callback = function()
-							Starlight:Destroy()
+							Eventide:Destroy()
 						end,
 					},
 				},
 			})
 		end)
 		mainWindow.Content.Topbar.Controls.Maximize["MouseButton1Click"]:Connect(function()
-			if Starlight.Maximized then
+			if Eventide.Maximized then
 				Unmaximize(mainWindow)
 			else
 				Maximize(mainWindow)
@@ -10266,20 +10267,20 @@ function Starlight:CreateWindow(WindowSettings)
 		mainWindow.Content.Topbar.Controls.Minimize["MouseButton1Click"]:Connect(function()
 			if not debounce then
 				debounce = true
-				Hide(mainWindow, false, true, Starlight.WindowKeybind)
-				Hide(StarlightUI.Drag, false, false, Starlight.WindowKeybind)
+				Hide(mainWindow, false, true, Eventide.WindowKeybind)
+				Hide(EventideUI.Drag, false, false, Eventide.WindowKeybind)
 				task.delay(0.4, function()
 					debounce = false
 				end)
 			end
 		end)
 
-		StarlightUI.MobileToggle.MouseButton1Click:Connect(function()
-			if Starlight.Minimized == true then
+		EventideUI.MobileToggle.MouseButton1Click:Connect(function()
+			if Eventide.Minimized == true then
 				if not debounce then
 					debounce = true
 					Unhide(mainWindow)
-					Unhide(StarlightUI.Drag)
+					Unhide(EventideUI.Drag)
 					Tween(
 						mainWindow.Content.Topbar.Controls.Minimize.Fill.Icon,
 						{ Position = UDim2.fromScale(0.5, 1.5) }
@@ -10289,11 +10290,11 @@ function Starlight:CreateWindow(WindowSettings)
 						debounce = false
 					end)
 				end
-			elseif Starlight.Minimized == false then
+			elseif Eventide.Minimized == false then
 				if not debounce then
 					debounce = true
-					Hide(mainWindow, false, true, Starlight.WindowKeybind)
-					Hide(StarlightUI.Drag, false, false, Starlight.WindowKeybind)
+					Hide(mainWindow, false, true, Eventide.WindowKeybind)
+					Hide(EventideUI.Drag, false, false, Eventide.WindowKeybind)
 					task.delay(0.4, function()
 						debounce = false
 					end)
@@ -10305,12 +10306,12 @@ function Starlight:CreateWindow(WindowSettings)
 			if gpe then
 				return
 			end
-			if input.KeyCode == Enum.KeyCode[Starlight.WindowKeybind] then
-				if Starlight.Minimized == true then
+			if input.KeyCode == Enum.KeyCode[Eventide.WindowKeybind] then
+				if Eventide.Minimized == true then
 					if not debounce then
 						debounce = true
 						Unhide(mainWindow)
-						Unhide(StarlightUI.Drag)
+						Unhide(EventideUI.Drag)
 						Tween(
 							mainWindow.Content.Topbar.Controls.Minimize.Fill.Icon,
 							{ Position = UDim2.fromScale(0.5, 1.5) }
@@ -10320,11 +10321,11 @@ function Starlight:CreateWindow(WindowSettings)
 							debounce = false
 						end)
 					end
-				elseif Starlight.Minimized == false then
+				elseif Eventide.Minimized == false then
 					if not debounce then
 						debounce = true
-						Hide(mainWindow, false, true, Starlight.WindowKeybind)
-						Hide(StarlightUI.Drag, false, false, Starlight.WindowKeybind)
+						Hide(mainWindow, false, true, Eventide.WindowKeybind)
+						Hide(EventideUI.Drag, false, false, Eventide.WindowKeybind)
 						task.delay(0.4, function()
 							debounce = false
 						end)
@@ -10336,12 +10337,12 @@ function Starlight:CreateWindow(WindowSettings)
 	--// ENDSUBSECTION
 
 	-- Return the window
-	return Starlight.Window
+	return Eventide.Window
 end
 
 --// SECTION : Config System
 
-function Starlight.FileSystem:BuildFolderTree(FileSettings)
+function Eventide.FileSystem:BuildFolderTree(FileSettings)
 	-- Revamp since beta 4 since we are storing stuff within like scripts for both themes and such
 	if isStudio or not isfolder then
 		return "Config system unavailable."
@@ -10351,26 +10352,26 @@ function Starlight.FileSystem:BuildFolderTree(FileSettings)
 		-- has root
 		if FileSettings.ThemesInRoot then
 			paths = {
-				Starlight.FileSystem.Folder,
-				`{Starlight.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}`,
-				`{Starlight.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}/configs`,
-				`{Starlight.FileSystem.Folder}/{FileSettings.RootFolder}/themes`,
+				Eventide.FileSystem.Folder,
+				`{Eventide.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}`,
+				`{Eventide.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}/configs`,
+				`{Eventide.FileSystem.Folder}/{FileSettings.RootFolder}/themes`,
 			}
 		else
 			paths = {
-				Starlight.FileSystem.Folder,
-				`{Starlight.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}`,
-				`{Starlight.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}/configs`,
-				`{Starlight.FileSystem.Folder}/{FileSettings.RootFolder}}/{FileSettings.ConfigFolder}/themes`,
+				Eventide.FileSystem.Folder,
+				`{Eventide.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}`,
+				`{Eventide.FileSystem.Folder}/{FileSettings.RootFolder}/{FileSettings.ConfigFolder}/configs`,
+				`{Eventide.FileSystem.Folder}/{FileSettings.RootFolder}}/{FileSettings.ConfigFolder}/themes`,
 			}
 		end
 	else
 		-- no root
 		paths = {
-			Starlight.FileSystem.Folder,
-			`{Starlight.FileSystem.Folder}/{FileSettings.ConfigFolder}`,
-			`{Starlight.FileSystem.Folder}/{FileSettings.ConfigFolder}/configs`,
-			`{Starlight.FileSystem.Folder}/{FileSettings.ConfigFolder}/themes`,
+			Eventide.FileSystem.Folder,
+			`{Eventide.FileSystem.Folder}/{FileSettings.ConfigFolder}`,
+			`{Eventide.FileSystem.Folder}/{FileSettings.ConfigFolder}/configs`,
+			`{Eventide.FileSystem.Folder}/{FileSettings.ConfigFolder}/themes`,
 		}
 	end
 
@@ -10381,7 +10382,7 @@ function Starlight.FileSystem:BuildFolderTree(FileSettings)
 	end
 end
 
-function Starlight.FileSystem:SaveConfig(file, path)
+function Eventide.FileSystem:SaveConfig(file, path)
 	if isStudio or not isfile then
 		return "Config system unavailable."
 	end
@@ -10390,13 +10391,13 @@ function Starlight.FileSystem:SaveConfig(file, path)
 		return false, "Please select a config file."
 	end
 
-	local fullPath = `{path}{file}{Starlight.FileSystem.FileExtension}`
+	local fullPath = `{path}{file}{Eventide.FileSystem.FileExtension}`
 
 	local data = {
 		objects = {},
 	}
 
-	for tsecidx, tabsection in next, Starlight.Window.TabSections do
+	for tsecidx, tabsection in next, Eventide.Window.TabSections do
 		for tidx, tab in next, tabsection.Tabs do
 			for grpidx, groupbox in next, tab.Groupboxes do
 				if groupbox.ClassName and groupbox.ClassName ~= "TabBox" then
@@ -10440,7 +10441,7 @@ function Starlight.FileSystem:SaveConfig(file, path)
 	return true
 end
 
-function Starlight.FileSystem:LoadConfig(file, path)
+function Eventide.FileSystem:LoadConfig(file, path)
 	if isStudio or not isfile then
 		return "Config system unavailable."
 	end
@@ -10449,7 +10450,7 @@ function Starlight.FileSystem:LoadConfig(file, path)
 		return false, "Please select a config file."
 	end
 
-	local fullPath = `{path}{file}{Starlight.FileSystem.FileExtension}`
+	local fullPath = `{path}{file}{Eventide.FileSystem.FileExtension}`
 	if not isfile(fullPath) then
 		return false, "Invalid file."
 	end
@@ -10468,13 +10469,13 @@ function Starlight.FileSystem:LoadConfig(file, path)
 	return true
 end
 
-function Starlight.FileSystem:RefreshConfigList(path)
+function Eventide.FileSystem:RefreshConfigList(path)
 	if isStudio or not isfile then
 		return "Config system unavailable."
 	end
 
 	if not isfolder(path) then
-		Starlight:Notification({
+		Eventide:Notification({
 			Title = "shitty executor",
 			Icon = 0,
 			Content = identifyexecutor() .. " is so shit bro.\n your file system is just broken 💀",
@@ -10487,8 +10488,8 @@ function Starlight.FileSystem:RefreshConfigList(path)
 	local configs = {}
 	for i = 1, #list do
 		local file = list[i]
-		if file:sub(-#Starlight.FileSystem.FileExtension) == Starlight.FileSystem.FileExtension then
-			local pos = file:find(Starlight.FileSystem.FileExtension, 1, true)
+		if file:sub(-#Eventide.FileSystem.FileExtension) == Eventide.FileSystem.FileExtension then
+			local pos = file:find(Eventide.FileSystem.FileExtension, 1, true)
 			local start = pos
 
 			local char = file:sub(pos, pos)
@@ -10509,19 +10510,19 @@ function Starlight.FileSystem:RefreshConfigList(path)
 	return configs
 end
 
-function Starlight:LoadAutoloadConfig()
+function Eventide:LoadAutoloadConfig()
 	if isStudio or not isfile then
 		return "Config system unavailable."
 	end
 
 	if
-		Starlight.FileSystem.AutoloadConfigPath and isfile(Starlight.FileSystem.AutoloadConfigPath .. "autoload.txt")
+		Eventide.FileSystem.AutoloadConfigPath and isfile(Eventide.FileSystem.AutoloadConfigPath .. "autoload.txt")
 	then
-		local name = readfile(Starlight.FileSystem.AutoloadConfigPath .. "autoload.txt")
+		local name = readfile(Eventide.FileSystem.AutoloadConfigPath .. "autoload.txt")
 
-		local success, err = Starlight.FileSystem:LoadConfig(name, Starlight.FileSystem.AutoloadConfigPath)
+		local success, err = Eventide.FileSystem:LoadConfig(name, Eventide.FileSystem.AutoloadConfigPath)
 		if not success then
-			Starlight:Notification({
+			Eventide:Notification({
 				Title = "Autoloading Error",
 				Icon = 6031071057,
 				Content = "Failed to load autoload config: " .. err,
@@ -10529,7 +10530,7 @@ function Starlight:LoadAutoloadConfig()
 			return
 		end
 
-		Starlight:Notification({
+		Eventide:Notification({
 			Title = "Autoloaded Configuration",
 			Icon = 4483362748,
 			Content = string.format("Auto loaded config %q", name),
@@ -10537,42 +10538,42 @@ function Starlight:LoadAutoloadConfig()
 	end
 end
 
-function Starlight:SetTheme(newTheme)
+function Eventide:SetTheme(newTheme)
 	local themeToCopy = newTheme
 	if type(themeToCopy) == "string" then
-		themeToCopy = Starlight.Themes[themeToCopy]
+		themeToCopy = Eventide.Themes[themeToCopy]
 	end
 
-	Starlight.CurrentTheme = deepCopy(themeToCopy)
+	Eventide.CurrentTheme = deepCopy(themeToCopy)
 	themeEvent:Fire()
 end
 
-function Starlight:LoadAutoloadTheme()
+function Eventide:LoadAutoloadTheme()
 	if isStudio or not isfile then
 		return "Config system unavailable."
 	end
 
-	if Starlight.FileSystem.AutoloadThemePath and isfile(Starlight.FileSystem.AutoloadThemePath .. "autoload.txt") then
-		local name = readfile(Starlight.FileSystem.AutoloadThemePath .. "autoload.txt")
+	if Eventide.FileSystem.AutoloadThemePath and isfile(Eventide.FileSystem.AutoloadThemePath .. "autoload.txt") then
+		local name = readfile(Eventide.FileSystem.AutoloadThemePath .. "autoload.txt")
 
 		if Themes[name] then
-			Starlight:SetTheme(name)
+			Eventide:SetTheme(name)
 		else
 			local content =
-				readfile(Starlight.FileSystem.AutoloadThemePath .. name .. Starlight.FileSystem.FileExtension)
+				readfile(Eventide.FileSystem.AutoloadThemePath .. name .. Eventide.FileSystem.FileExtension)
 			local success, decoded = pcall(HttpService.JSONDecode, HttpService, content)
 			if not success then
 				return false, "Unable to decode JSON data."
 			end
 
-			Starlight:SetTheme(decoded)
+			Eventide:SetTheme(decoded)
 		end
 	end
 end
 
 --// ENDSECTION
 
-StarlightUI.Enabled = true
+EventideUI.Enabled = true
 
 --// ENDSECTION
 
@@ -10581,17 +10582,17 @@ StarlightUI.Enabled = true
 local enabled = true
 
 if isStudio and enabled then
-	--Starlight:SetTheme("Hollywood Dark")
+	--Eventide:SetTheme("Hollywood Dark")
 
-	local win = Starlight:CreateWindow({
+	local win = Eventide:CreateWindow({
 		Name = "Window",
 		Subtitle = "this is an optional subtitle",
 		Icon = 92936499827985,
 
 		LoadingEnabled = false,
 		LoadingSettings = {
-			Title = "Starlight Interface Suite",
-			Subtitle = "Welcome to Starlight",
+			Title = "Eventide Interface Suite",
+			Subtitle = "Welcome to Eventide",
 		},
 
 		BuildWarnings = true,
@@ -10608,7 +10609,7 @@ if isStudio and enabled then
 
 		KeySystem = {
 			Enabled = false,
-			Title = "Starlight Key System",
+			Title = "Eventide Key System",
 			Subtitle = "Enter Your Key To Use The Script",
 			Note = "This Key System Only supports strings",
 
@@ -10929,12 +10930,12 @@ if isStudio and enabled then
 		Content = "Hello!! Im A Paragraph, and i can store bunch of text. \nI also grow bigger or smaller depending on how much text is in my body! \nLike this, i am a much bigger paragraph than the other one! i also support multi lines ",
 	}, "prgrph2")
 
-	Starlight:Notification({
+	Eventide:Notification({
 		Title = "Hi",
 		Content = "Hello!! Im A Paragraph, and i can store bunch of text. \nI also grow bigger or smaller depending on how much text is in my body! \nLike this, i am a much bigger paragraph than the other one! i also support multi lines ",
 		Icon = NebulaIcons:GetIcon("notifications_active", "Material"),
 	})
-	Starlight:Notification({
+	Eventide:Notification({
 		Title = "Infinite Notification",
 		Content = "same as the other guy but i cant expire cus im set to -1 duration",
 		Duration = -1,
@@ -10942,7 +10943,7 @@ if isStudio and enabled then
 	})
 
 	--[[task.delay(4, function()
-		Starlight:SetTheme("Starlight")
+		Eventide:SetTheme("Eventide")
 	end)]]
 
 	local configg = t:BuildConfigGroupbox(2)
@@ -10954,17 +10955,9 @@ if isStudio and enabled then
 		Page = Instance.new("Frame"),
 	}, "customtab")
 
-	Starlight:LoadAutoloadConfig()
+	Eventide:LoadAutoloadConfig()
 end --]=]0
 
 --// ENDSECTION
 
---// SECTION : Protection of our work
---[[Starlight:Notification({
-	Title = "Enjoying Starlight?",
-	Content = "Thanks for using a script that uses our UI Library. Starlight is made with love, care and effort by Nebula Softworks And Nebula Softworks alone. No other developer or such entity. We are spreading this message as a skid who claims others work as their own, etheruit (a fake bitdancer - bitdancer._) on discord, is claiming Starlight as theirs. Help us protect our work by staying away from his lies. You can always find us at dsc.gg/nebulasoftworks.\nThank you ❤️",
-	Duration = 10,
-	Icon = 105789146907268,
-})]]
-
-return Starlight
+return Eventide

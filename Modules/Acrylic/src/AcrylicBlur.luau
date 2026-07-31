@@ -2,8 +2,8 @@ local Creator = require(script.Parent.Creator)
 local createAcrylic = require(script.Parent.CreateAcrylic)
 local viewportPointToWorld, getOffset = unpack(require(script.Parent.Utils))
 
-local BlurFolder = game:GetService("Workspace").CurrentCamera:FindFirstChild("Starlight Blur Elements") and game:GetService("Workspace").CurrentCamera["Starlight Blur Elements"] or Instance.new("Folder", game:GetService("Workspace").CurrentCamera)
-BlurFolder.Name = "Starlight Blur Elements"
+local BlurFolder = game:GetService("Workspace").CurrentCamera:FindFirstChild("Eventide Blur Elements") and game:GetService("Workspace").CurrentCamera["Eventide Blur Elements"] or Instance.new("Folder", game:GetService("Workspace").CurrentCamera)
+BlurFolder.Name = "Eventide Blur Elements"
 
 local function createAcrylicBlur(distance)
 	

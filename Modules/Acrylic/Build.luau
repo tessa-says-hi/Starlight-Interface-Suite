@@ -26,7 +26,7 @@ local function init()
 	local universalDof
 	for i,v in pairs(Lighting:GetChildren()) do
 		if v:IsA("DepthOfFieldEffect")
-			and v.Name ~= "starlightBlur" then
+			and v.Name ~= "eventideBlur" then
 			universalDof = v
 		end
 	end
@@ -40,20 +40,20 @@ local function init()
 		universalDof.Enabled = true
 	end
 
-	local partRoot = Camera:FindFirstChild("Starlight Blur Elements") or Instance.new("Folder", Camera)
-	partRoot.Name = "Starlight Blur Elements"
+	local partRoot = Camera:FindFirstChild("Eventide Blur Elements") or Instance.new("Folder", Camera)
+	partRoot.Name = "Eventide Blur Elements"
 
 	local blurSize         = Vector2.new(5, 2)
 	local partSize         = 0.01
 	local partTransparency = 0.99
 
-	local blurObject          = Lighting:FindFirstChild("starlightBlur") ~= nil and Lighting:FindFirstChild("starlightBlur") or universalDof:Clone()
+	local blurObject          = Lighting:FindFirstChild("eventideBlur") ~= nil and Lighting:FindFirstChild("eventideBlur") or universalDof:Clone()
 	blurObject.NearIntensity  = 0
 	blurObject.FocusDistance  = universalDof.FocusDistance
 	blurObject.InFocusRadius = universalDof.InFocusRadius
 	blurObject.FarIntensity = universalDof.FarIntensity
 	blurObject.Parent         = Lighting
-	blurObject.Name = "starlightBlur"
+	blurObject.Name = "eventideBlur"
 
 	universalDof:GetPropertyChangedSignal("FarIntensity"):Connect(function()
 		blurObject.FarIntensity = universalDof.FarIntensity
@@ -406,8 +406,8 @@ return createAcrylic
 local createAcrylic = require(script.Parent.CreateAcrylic)
 local viewportPointToWorld, getOffset = unpack(require(script.Parent.Utils))
 
-local BlurFolder = game:GetService("Workspace").CurrentCamera:FindFirstChild("Starlight Blur Elements") and game:GetService("Workspace").CurrentCamera["Starlight Blur Elements"] or Instance.new("Folder", game:GetService("Workspace").CurrentCamera)
-BlurFolder.Name = "Starlight Blur Elements"
+local BlurFolder = game:GetService("Workspace").CurrentCamera:FindFirstChild("Eventide Blur Elements") and game:GetService("Workspace").CurrentCamera["Eventide Blur Elements"] or Instance.new("Folder", game:GetService("Workspace").CurrentCamera)
+BlurFolder.Name = "Eventide Blur Elements"
 
 local function createAcrylicBlur(distance)
 	
