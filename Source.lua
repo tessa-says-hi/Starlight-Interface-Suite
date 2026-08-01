@@ -5829,6 +5829,9 @@ function Eventide:CreateWindow(WindowSettings)
 						end
 
 						Element.SettingsExpanded = expanded == true
+						if Element.SettingsExpanded then
+							settingsHolder.Visible = true
+						end
 						local height = Element.SettingsExpanded
 							and math.max(
 								math.ceil(settingsGroupbox.Instance.AbsoluteSize.Y),
@@ -5839,8 +5842,13 @@ function Eventide:CreateWindow(WindowSettings)
 
 						if instant then
 							settingsHolder.Size = size
+							settingsHolder.Visible = Element.SettingsExpanded
 						else
-							Tween(settingsHolder, { Size = size }, nil, Tween.Info("Quint", "Out", 0.25))
+							Tween(settingsHolder, { Size = size }, function()
+								if Element ~= nil and settingsHolder ~= nil and not Element.SettingsExpanded then
+									settingsHolder.Visible = false
+								end
+							end, Tween.Info("Quint", "Out", 0.25))
 						end
 						refreshSettingsButtons()
 						return Element.SettingsExpanded
