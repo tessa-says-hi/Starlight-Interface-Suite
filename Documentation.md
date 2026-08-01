@@ -6,7 +6,7 @@ Eventide currently follows the upstream [Starlight Gen1 API documentation](https
 
 ## Collapsible toggle settings
 
-Call `AddSettings` on a toggle to place a gear beside it and create a settings area that starts collapsed. The returned object is a normal groupbox, so it supports the full component API and participates in config save/load.
+Call `AddSettings` on a toggle to place a gear beside it and create a settings area that starts collapsed. The returned object is a normal groupbox, so it supports standard groupbox components, nested components through labels or toggles, and config save/load.
 
 ```luau
 local feature = groupbox:CreateToggle({

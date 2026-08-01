@@ -1,5 +1,6 @@
 local env = getgenv()
 local previous = env.EventideExample
+local HttpService = game:GetService("HttpService")
 
 if previous and previous.Destroy then
 	previous:Destroy()
@@ -8,7 +9,10 @@ end
 env.InterfaceName = "Eventide Component Gallery"
 
 local Eventide = loadstring(
-	game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua")
+	game:HttpGet(
+		"https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua?cache="
+			.. HttpService:GenerateGUID(false)
+	)
 )()
 
 local NebulaIcons = loadstring(
@@ -401,16 +405,19 @@ configurableSettings:CreateSlider({
 	end,
 }, "intensity")
 
-configurableSettings:CreateDropdown({
-	Name = "Mode",
-	Options = { "Balanced", "Fast", "Precise" },
-	CurrentOption = { "Balanced" },
-	Required = true,
-	MultipleOptions = false,
-	Callback = function(options)
-		log("Feature mode", table.concat(options, ", "))
-	end,
-}, "mode")
+configurableSettings
+	:CreateLabel({
+		Name = "Mode",
+	}, "mode_label")
+	:AddDropdown({
+		Options = { "Balanced", "Fast", "Precise" },
+		CurrentOption = { "Balanced" },
+		Required = true,
+		MultipleOptions = false,
+		Callback = function(options)
+			log("Feature mode", table.concat(options, ", "))
+		end,
+	}, "mode")
 
 configurableSettings:CreateInput({
 	Name = "Profile Name",
