@@ -10,7 +10,7 @@ Eventide is a rebranded Gen1 fork of the Starlight Interface Suite. This page do
 - [Complete component gallery](example.luau)
 - [Eventide source](Source.lua)
 - [Raw Eventide loader](https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua)
-- [Nebula Icon Library loader](https://raw.githubusercontent.com/Nebula-Softworks/Nebula-Icon-Library/master/Loader.luau)
+- [Nebula Icon Library loader](https://raw.githubusercontent.com/tessa-says-hi/Nebula-Icon-Library/master/Loader.luau)
 - [Upstream Starlight documentation](https://docs.nebulasoftworks.xyz/starlight/)
 
 ## Installation
@@ -36,7 +36,7 @@ Icons are Roblox asset IDs. The optional Nebula Icon Library makes those IDs eas
 
 ~~~luau
 local NebulaIcons = loadstring(
-	game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Nebula-Icon-Library/master/Loader.luau")
+	game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Nebula-Icon-Library/master/Loader.luau")
 )()
 
 local settingsIcon = NebulaIcons:GetIcon("settings", "Lucide")

@@ -16,7 +16,7 @@ local Eventide = loadstring(
 )()
 
 local NebulaIcons = loadstring(
-	game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Nebula-Icon-Library/master/Loader.luau")
+	game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Nebula-Icon-Library/master/Loader.luau")
 )()
 
 local function icon(name, source)
