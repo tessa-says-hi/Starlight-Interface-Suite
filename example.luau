@@ -1,6 +1,5 @@
 local env = getgenv()
 local previous = env.EventideExample
-local HttpService = game:GetService("HttpService")
 
 if previous and previous.Destroy then
 	previous:Destroy()
@@ -8,16 +7,8 @@ end
 
 env.InterfaceName = "Eventide Component Gallery"
 
-local Eventide = loadstring(
-	game:HttpGet(
-		"https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua?cache="
-			.. HttpService:GenerateGUID(false)
-	)
-)()
-
-local NebulaIcons = loadstring(
-	game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Nebula-Icon-Library/master/Loader.luau")
-)()
+local Eventide = loadstring(game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua"))()
+local NebulaIcons = loadstring(game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Nebula-Icon-Library/master/Loader.luau"))()
 
 local function icon(name, source)
 	return NebulaIcons:GetIcon(name, source)

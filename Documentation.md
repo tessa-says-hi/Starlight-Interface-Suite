@@ -18,26 +18,15 @@ Eventide is a rebranded Gen1 fork of the Starlight Interface Suite. This page do
 Load the current Eventide source from this fork:
 
 ~~~luau
-local HttpService = game:GetService("HttpService")
-
-local Eventide = loadstring(
-	game:HttpGet(
-		"https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua?cache="
-			.. HttpService:GenerateGUID(false)
-	)
-)()
+local Eventide = loadstring(game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua"))()
 ~~~
-
-The unique query value prevents a stale raw-file response while the fork is being updated. A fixed URL without the query is also valid when caching is desirable.
 
 ### Icons
 
 Icons are Roblox asset IDs. The optional Nebula Icon Library makes those IDs easier to look up:
 
 ~~~luau
-local NebulaIcons = loadstring(
-	game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Nebula-Icon-Library/master/Loader.luau")
-)()
+local NebulaIcons = loadstring(game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Nebula-Icon-Library/master/Loader.luau"))()
 
 local settingsIcon = NebulaIcons:GetIcon("settings", "Lucide")
 local colorIcon = NebulaIcons:GetIcon("color_lens", "Material")
@@ -48,14 +37,7 @@ Pass a returned icon anywhere Eventide accepts <code>Icon</code>, <code>Checkbox
 ## Minimal example
 
 ~~~luau
-local HttpService = game:GetService("HttpService")
-
-local Eventide = loadstring(
-	game:HttpGet(
-		"https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua?cache="
-			.. HttpService:GenerateGUID(false)
-	)
-)()
+local Eventide = loadstring(game:HttpGet("https://raw.githubusercontent.com/tessa-says-hi/Starlight-Interface-Suite/master/Source.lua"))()
 
 local Window = Eventide:CreateWindow({
 	Name = "My Eventide UI",
@@ -706,7 +688,7 @@ end)
 
 If <code>CreateDropdown</code>, <code>CreateBind</code>, or <code>CreateColorPicker</code> is missing on a groupbox, attach the nested component to a label or toggle with its <code>Add...</code> method.
 
-If <code>AddSettings</code> is missing, the running client likely loaded an older cached source. Use the cache-safe loader from the installation section and rerun the script.
+If <code>AddSettings</code> is missing, confirm that the script uses the Eventide source URL from the installation section and rerun it.
 
 ### Config system unavailable
 
