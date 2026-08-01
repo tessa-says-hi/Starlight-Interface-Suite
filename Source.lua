@@ -5380,7 +5380,26 @@ function Eventide:CreateWindow(WindowSettings)
 					local settingsGroupbox
 					local settingsHolder
 					local settingsIndex
+					local settingsSizeConnection
 					local settingsIcon = ElementSettings.SettingsIcon or 101463883805422
+
+					local function syncGroupboxSize()
+						if Groupbox == nil or Groupbox.Instance == nil then
+							return
+						end
+
+						local groupbox = Groupbox.Instance
+						local content = Groupbox.ParentingItem
+						local contentTop = content.AbsolutePosition.Y - groupbox.AbsolutePosition.Y
+						local groupboxSize = groupbox.Size
+						groupbox.AutomaticSize = Enum.AutomaticSize.None
+						groupbox.Size = UDim2.new(
+							groupboxSize.X.Scale,
+							groupboxSize.X.Offset,
+							0,
+							math.ceil(contentTop + content.AbsoluteSize.Y)
+						)
+					end
 
 					local function refreshSettingsButtons()
 						for _, button in pairs(settingsButtons) do
@@ -5888,6 +5907,12 @@ function Eventide:CreateWindow(WindowSettings)
 						settingsGroupbox.Instance.Position = UDim2.fromOffset(6, 6)
 						settingsGroupbox.Instance.Size = UDim2.new(1, -12, settingsSize.Y.Scale, settingsSize.Y.Offset)
 						settingsGroupbox.Instance.Parent = settingsHolder
+
+						if settingsSizeConnection == nil then
+							settingsSizeConnection = Groupbox.ParentingItem:GetPropertyChangedSignal("AbsoluteSize")
+								:Connect(syncGroupboxSize)
+						end
+						syncGroupboxSize()
 
 						for _, ElementInstance in pairs(Instances) do
 							createSettingsButton(ElementInstance)
