@@ -5439,17 +5439,6 @@ function Eventide:CreateWindow(WindowSettings)
 					end
 
 					task.spawn(function()
-						Element.Container = Instance.new("Frame")
-						Element.Container.Name = "TOGGLE_CONTAINER_" .. Index
-						Element.Container.AutomaticSize = Enum.AutomaticSize.Y
-						Element.Container.BackgroundTransparency = 1
-						Element.Container.Size = UDim2.new(1, 0, 0, 0)
-						Element.Container.Parent = Groupbox.ParentingItem
-
-						local containerLayout = Instance.new("UIListLayout")
-						containerLayout.SortOrder = Enum.SortOrder.LayoutOrder
-						containerLayout.Parent = Element.Container
-
 						Instances = {
 							Style1 = GroupboxTemplateInstance["Checkbox_TEMPLATE_Disabled"]:Clone(),
 							Style2 = GroupboxTemplateInstance["Switch_TEMPLATE_Disabled"]:Clone(),
@@ -5720,8 +5709,7 @@ function Eventide:CreateWindow(WindowSettings)
 
 							tooltips[i] = AddToolTip(Element.Values.Tooltip or "", ElementInstance)
 
-							ElementInstance.LayoutOrder = 1
-							ElementInstance.Parent = Element.Container
+							ElementInstance.Parent = Groupbox.ParentingItem
 
 							Element.Instance = ElementInstance.Visible and ElementInstance or Element.Instance
 						end
@@ -5739,7 +5727,9 @@ function Eventide:CreateWindow(WindowSettings)
 							ElementSettings = NewElementSettings
 							Index = NewIndex
 							Element.Values = ElementSettings
-							Element.Container.Name = "TOGGLE_CONTAINER_" .. Index
+							if settingsHolder ~= nil then
+								settingsHolder.Name = "SETTINGS_" .. Index
+							end
 
 							if Element.Values.SettingsIcon ~= nil then
 								settingsIcon = Element.Values.SettingsIcon
@@ -5875,9 +5865,8 @@ function Eventide:CreateWindow(WindowSettings)
 						settingsHolder.Name = "SETTINGS_" .. Index
 						settingsHolder.BackgroundTransparency = 1
 						settingsHolder.ClipsDescendants = true
-						settingsHolder.LayoutOrder = 2
 						settingsHolder.Size = UDim2.new(1, 0, 0, 0)
-						settingsHolder.Parent = Element.Container
+						settingsHolder.Parent = Groupbox.ParentingItem
 
 						settingsIndex = "__settings_" .. tostring(GroupIndex) .. "_" .. tostring(Index)
 						settingsGroupbox = Tab:CreateGroupbox({
@@ -5947,7 +5936,6 @@ function Eventide:CreateWindow(WindowSettings)
 								nestedElement:Destroy()
 							end
 						end
-						Element.Container:Destroy()
 						Element = nil
 					end
 
