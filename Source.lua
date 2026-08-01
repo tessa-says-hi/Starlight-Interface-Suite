@@ -5354,6 +5354,8 @@ function Eventide:CreateWindow(WindowSettings)
 
 						CurrentValue = bool,
 						CheckboxIcon = number, **
+						SettingsIcon = number, **
+						SettingsTooltip = string, **
 						
 						Style = number, **
 						
@@ -5369,10 +5371,85 @@ function Eventide:CreateWindow(WindowSettings)
 						Class = "Toggle",
 						NestedElements = {},
 						IgnoreConfig = ElementSettings.IgnoreConfig,
+						Settings = nil,
+						SettingsExpanded = false,
 					}
 					local Instances
+					local settingsButtons = {}
+					local settingsTooltips = {}
+					local settingsGroupbox
+					local settingsHolder
+					local settingsIndex
+					local settingsIcon = ElementSettings.SettingsIcon or 101463883805422
+
+					local function refreshSettingsButtons()
+						for _, button in pairs(settingsButtons) do
+							Tween(
+								button,
+								{
+									BackgroundTransparency = Element.SettingsExpanded and 0.75 or 1,
+									ImageColor3 = Element.SettingsExpanded and Eventide.CurrentTheme.Foregrounds.Light
+										or Eventide.CurrentTheme.Foregrounds.Medium,
+									Rotation = Element.SettingsExpanded and 45 or 0,
+								},
+								nil,
+								Tween.Info("Quint", "Out", 0.2)
+							)
+						end
+					end
+
+					local function createSettingsButton(ElementInstance)
+						local button = Instance.new("ImageButton")
+						button.Name = "Settings"
+						button.AutoButtonColor = false
+						button.BackgroundTransparency = 1
+						button.Image = "rbxassetid://" .. settingsIcon
+						button.ImageColor3 = Eventide.CurrentTheme.Foregrounds.Medium
+						button.LayoutOrder = 1000
+						button.Size = UDim2.fromOffset(22, 22)
+						button.ZIndex = ElementInstance.ZIndex + 2
+
+						local corner = Instance.new("UICorner")
+						corner.CornerRadius = UDim.new(0, 5)
+						corner.Parent = button
+
+						local container = ElementInstance.ElementContainer
+						if container:FindFirstChildOfClass("UIListLayout") == nil then
+							button.AnchorPoint = Vector2.new(1, 0.5)
+							button.Position = UDim2.new(1, -4, 0.5, 0)
+						end
+						button.Parent = container
+
+						ThemeMethods.bindTheme(button, "BackgroundColor3", "Backgrounds.Light")
+						settingsTooltips[ElementInstance] =
+							AddToolTip(Element.Values.SettingsTooltip or "Open settings", button)
+
+						button.MouseEnter:Connect(function()
+							Tween(button, {
+								BackgroundTransparency = 0.7,
+								ImageColor3 = Eventide.CurrentTheme.Foregrounds.Light,
+							})
+						end)
+						button.MouseLeave:Connect(refreshSettingsButtons)
+						button.MouseButton1Click:Connect(function()
+							Element:SetSettingsExpanded(not Element.SettingsExpanded)
+						end)
+
+						settingsButtons[ElementInstance] = button
+					end
 
 					task.spawn(function()
+						Element.Container = Instance.new("Frame")
+						Element.Container.Name = "TOGGLE_CONTAINER_" .. Index
+						Element.Container.AutomaticSize = Enum.AutomaticSize.Y
+						Element.Container.BackgroundTransparency = 1
+						Element.Container.Size = UDim2.new(1, 0, 0, 0)
+						Element.Container.Parent = Groupbox.ParentingItem
+
+						local containerLayout = Instance.new("UIListLayout")
+						containerLayout.SortOrder = Enum.SortOrder.LayoutOrder
+						containerLayout.Parent = Element.Container
+
 						Instances = {
 							Style1 = GroupboxTemplateInstance["Checkbox_TEMPLATE_Disabled"]:Clone(),
 							Style2 = GroupboxTemplateInstance["Switch_TEMPLATE_Disabled"]:Clone(),
@@ -5643,7 +5720,8 @@ function Eventide:CreateWindow(WindowSettings)
 
 							tooltips[i] = AddToolTip(Element.Values.Tooltip or "", ElementInstance)
 
-							ElementInstance.Parent = Groupbox.ParentingItem
+							ElementInstance.LayoutOrder = 1
+							ElementInstance.Parent = Element.Container
 
 							Element.Instance = ElementInstance.Visible and ElementInstance or Element.Instance
 						end
@@ -5661,6 +5739,15 @@ function Eventide:CreateWindow(WindowSettings)
 							ElementSettings = NewElementSettings
 							Index = NewIndex
 							Element.Values = ElementSettings
+							Element.Container.Name = "TOGGLE_CONTAINER_" .. Index
+
+							if Element.Values.SettingsIcon ~= nil then
+								settingsIcon = Element.Values.SettingsIcon
+							end
+							for instance, button in pairs(settingsButtons) do
+								button.Image = "rbxassetid://" .. settingsIcon
+								settingsTooltips[instance].Text = Element.Values.SettingsTooltip or "Open settings"
+							end
 
 							Set(Element.Values.CurrentValue)
 							local Success, Response = pcall(function()
@@ -5746,7 +5833,112 @@ function Eventide:CreateWindow(WindowSettings)
 						end
 					end)
 
+					function Element:SetSettingsExpanded(expanded, instant)
+						if settingsGroupbox == nil then
+							return false
+						end
+
+						Element.SettingsExpanded = expanded == true
+						local height = Element.SettingsExpanded
+							and math.max(
+								math.ceil(settingsGroupbox.Instance.AbsoluteSize.Y),
+								settingsGroupbox.Instance.Size.Y.Offset
+							) + 12
+							or 0
+						local size = UDim2.new(1, 0, 0, height)
+
+						if instant then
+							settingsHolder.Size = size
+						else
+							Tween(settingsHolder, { Size = size }, nil, Tween.Info("Quint", "Out", 0.25))
+						end
+						refreshSettingsButtons()
+						return Element.SettingsExpanded
+					end
+
+					function Element:ToggleSettings()
+						return Element:SetSettingsExpanded(not Element.SettingsExpanded)
+					end
+
+					function Element:AddSettings(SettingsSettings)
+						if settingsGroupbox ~= nil then
+							return settingsGroupbox
+						end
+
+						SettingsSettings = SettingsSettings or {}
+						settingsIcon = SettingsSettings.Icon or Element.Values.SettingsIcon or settingsIcon
+						if SettingsSettings.Tooltip ~= nil then
+							Element.Values.SettingsTooltip = SettingsSettings.Tooltip
+						end
+
+						settingsHolder = Instance.new("Frame")
+						settingsHolder.Name = "SETTINGS_" .. Index
+						settingsHolder.BackgroundTransparency = 1
+						settingsHolder.ClipsDescendants = true
+						settingsHolder.LayoutOrder = 2
+						settingsHolder.Size = UDim2.new(1, 0, 0, 0)
+						settingsHolder.Parent = Element.Container
+
+						settingsIndex = "__settings_" .. tostring(GroupIndex) .. "_" .. tostring(Index)
+						settingsGroupbox = Tab:CreateGroupbox({
+							Name = SettingsSettings.Name or (Element.Values.Name .. " Settings"),
+							Icon = settingsIcon,
+							Column = GroupboxSettings.Column,
+							Style = SettingsSettings.Style or 2,
+						}, settingsIndex)
+						settingsGroupbox.Instance.AnchorPoint = Vector2.zero
+						local settingsSize = settingsGroupbox.Instance.Size
+						settingsGroupbox.Instance.Position = UDim2.fromOffset(6, 6)
+						settingsGroupbox.Instance.Size = UDim2.new(1, -12, settingsSize.Y.Scale, settingsSize.Y.Offset)
+						settingsGroupbox.Instance.Parent = settingsHolder
+
+						for _, ElementInstance in pairs(Instances) do
+							createSettingsButton(ElementInstance)
+						end
+
+						local destroySettings = settingsGroupbox.Destroy
+						local destroyed = false
+						function settingsGroupbox:Destroy()
+							if destroyed then
+								return
+							end
+							destroyed = true
+							destroySettings(self)
+							Tab.Groupboxes[settingsIndex] = nil
+
+							for instance, button in pairs(settingsButtons) do
+								button:Destroy()
+								settingsButtons[instance] = nil
+							end
+							for instance, tooltip in pairs(settingsTooltips) do
+								tooltip.Parent:Destroy()
+								settingsTooltips[instance] = nil
+							end
+							settingsHolder:Destroy()
+							settingsHolder = nil
+							settingsGroupbox = nil
+							Element.Settings = nil
+							Element.SettingsExpanded = false
+						end
+
+						settingsGroupbox.Instance:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+							if Element.SettingsExpanded then
+								Element:SetSettingsExpanded(true)
+							end
+						end)
+						themeEvent.Event:Connect(refreshSettingsButtons)
+
+						Element.Settings = settingsGroupbox
+						Element:SetSettingsExpanded(SettingsSettings.Expanded == true, true)
+						return settingsGroupbox
+					end
+
+					Element.CreateSettings = Element.AddSettings
+
 					function Element:Destroy()
+						if settingsGroupbox ~= nil then
+							settingsGroupbox:Destroy()
+						end
 						for _, ElementInstance in pairs(Instances) do
 							ElementInstance:Destroy()
 						end
@@ -5755,10 +5947,12 @@ function Eventide:CreateWindow(WindowSettings)
 								nestedElement:Destroy()
 							end
 						end
+						Element.Container:Destroy()
 						Element = nil
 					end
 
 					function Element:Lock(Reason: string?)
+						Element:SetSettingsExpanded(false)
 						for _, ElementInstance in pairs(Instances) do
 							ElementInstance.Lock_Overlay.Visible = true
 							ElementInstance.Interactable = false

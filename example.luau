@@ -29,6 +29,7 @@ local icons = {
 	nested = icon("atom", "Phosphor"),
 	dialogs = icon("cursor-click", "Phosphor"),
 	settings = icon("rocket", "Lucide"),
+	gear = icon("settings", "Lucide"),
 	custom = icon("aperture", "Lucide"),
 	button = icon("locate", "Lucide"),
 	check = icon("check", "Material"),
@@ -371,9 +372,58 @@ nestedToggle:AddDropdown({
 	end,
 }, "dropdown")
 
+local configurableToggle = toggleNestedGroup:CreateToggle({
+	Name = "Configurable Feature",
+	Tooltip = "Use the gear to reveal advanced controls.",
+	SettingsIcon = icons.gear,
+	SettingsTooltip = "Configure this feature",
+	CurrentValue = true,
+	Style = 2,
+	Callback = function(value)
+		log("Configurable feature", value)
+	end,
+}, "configurable_toggle")
+
+local configurableSettings = configurableToggle:AddSettings({
+	Name = "Feature Settings",
+	Icon = icons.gear,
+	Expanded = false,
+})
+
+configurableSettings:CreateSlider({
+	Name = "Intensity",
+	Range = { 0, 100 },
+	CurrentValue = 65,
+	Increment = 5,
+	Suffix = "%",
+	Callback = function(value)
+		log("Feature intensity", value)
+	end,
+}, "intensity")
+
+configurableSettings:CreateDropdown({
+	Name = "Mode",
+	Options = { "Balanced", "Fast", "Precise" },
+	CurrentOption = { "Balanced" },
+	Required = true,
+	MultipleOptions = false,
+	Callback = function(options)
+		log("Feature mode", table.concat(options, ", "))
+	end,
+}, "mode")
+
+configurableSettings:CreateInput({
+	Name = "Profile Name",
+	CurrentValue = "Default",
+	PlaceholderText = "Profile name",
+	Callback = function(value)
+		log("Feature profile", value)
+	end,
+}, "profile_name")
+
 toggleNestedGroup:CreateParagraph({
 	Name = "Supported Parents",
-	Content = "Bind, color picker, and dropdown components can be nested on both labels and toggles.",
+	Content = "Inline bind, color picker, and dropdown components work on labels and toggles. AddSettings creates a collapsible area that supports the full groupbox component API.",
 }, "nested_info")
 
 local dialogsGroup = dialogsTab:CreateGroupbox({
